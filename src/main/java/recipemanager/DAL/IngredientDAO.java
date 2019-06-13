@@ -1,13 +1,10 @@
 package main.java.recipemanager.DAL;
+import main.java.recipemanager.entities.Ingredient;
+import main.java.recipemanager.entities.Vegetable;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
-import recipemanager.entities.Ingredient;
-import recipemanager.entities.Vegetable;
 
 public class IngredientDAO {
 	private static final String EXCEPTION_IN_RESULTSET = "Exception while executing query / getting result set";
@@ -15,7 +12,7 @@ public class IngredientDAO {
 	private static final String GET_INGREDIENTS_BY_RECIPE = "SELECT * FROM ingredient WHERE recipe_id=";
 	private static final String GET_INGREDIENT_BY_ID = "SELECT * FROM ingredient where id=";
 	private static final String GET_ALL_INGREDIENTS = "SELECT * FROM ingredient";
-	private static final String CREATE_INGREDIENT = "INSERT INTO ingredient(vegetable, recipe_id, count) VALUES(?, ?, ?) RETURNING id;";
+	private static final String CREATE_INGREDIENT = "INSERT INTO ingredient (vegetable_id, recipe_id, weight) VALUES(?, ?, ?) RETURNING id;";
 	private static final String REMOVE_INGREDIENT = "DELETE FROM ingredient WHERE id=";
 	private static final String REMOVE_INGREDIENTS_FROM_RECIPE = "DELETE FROM ingredient WHERE recipe_id=";
 	
@@ -72,7 +69,7 @@ public class IngredientDAO {
         	Statement statement = connection.createStatement();
         	ResultSet resultSet = statement.executeQuery(GET_ALL_INGREDIENTS)) {
             while(resultSet.next()) {
-            	Vegetable vegetable = new VegetableDAO().getById(resultSet.getInt("vegetable"));
+            	Vegetable vegetable = new VegetableDAO().getById(resultSet.getInt("vegetable_id"));
                 list.add(new Ingredient(
             		resultSet.getInt("id"),
             		vegetable, resultSet.getDouble("weight"),
@@ -80,41 +77,45 @@ public class IngredientDAO {
                 ));
             }
         } catch (Exception ex) {
-        	System.out.println(EXCEPTION_IN_RESULTSET);
-        }      
+			System.out.println(EXCEPTION_IN_RESULTSET);
+        }
+        System.out.println("All ingredients:");
         for (Ingredient ingredient : list) {
 			System.out.println(ingredient.toString());
 		}
         return list;
     }
     
-    /*public Ingredient create(int recipeId, int vegetableId, double weight) {
+    public Ingredient create(int recipeId, int vegetableId, double weight) {
 		Ingredient ingredient = null;
+		System.out.println(CREATE_INGREDIENT);
     	try (Connection connection = DBConnector.openConnection();
     		PreparedStatement statement = connection.prepareStatement(CREATE_INGREDIENT)) {
-	        statement.setInt(1, ingredientId);
+	        statement.setInt(1, vegetableId);
 	        statement.setInt(2, recipeId);
-	        statement.setDouble(3, count);
+	        statement.setDouble(3, weight);
+
     		try (ResultSet resultSet = statement.executeQuery()){
 	            while(resultSet.next()) {
+	            	Vegetable vegetable = new VegetableDAO().getById(vegetableId);
 					ingredient = new Ingredient(
 	            			resultSet.getInt("id"),
-	            			recipeId,
-	            		new VegetableDAO().getById(ingredientId),
-	            		count
+							vegetable,
+							weight,
+							recipeId
 	            	);
 	            }
 	        } catch (SQLException | NullPointerException ex) {
-	        	System.out.println(EXCEPTION_IN_RESULTSET);
+	        	//System.out.println(EXCEPTION_IN_RESULTSET);
 	        }
 	    } catch (Exception ex) {
 	    	System.out.println(EXCEPTION_IN_STATEMENT);
 	    }
-		System.out.println(rate == null
-				? "Rate is not created"
-				: rate.toString());
-        return rate;
-    }*/
+		System.out.println(ingredient == null
+				? "Ingredient is not created"
+				: ingredient.toString());
+        return ingredient;
+    }
     
 	public void remove(int id){
     	try (Connection connection = DBConnector.openConnection();

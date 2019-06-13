@@ -1,6 +1,6 @@
 package main.java.recipemanager.entities;
 
-import recipemanager.vegetabletypes.*;
+import main.java.recipemanager.vegetabletypes.*;
 
 public class Vegetable extends Entity {
 	private String title;
@@ -74,8 +74,9 @@ public class Vegetable extends Entity {
 
 	@Override
 	public String toString() {
-		return "Vegetable{ " +
-				"title='" + title + '\'' +
+		return "Vegetable { " +
+				"id=" + super.getId() +
+				", title='" + title + '\'' +
 				", caloricityPer100g=" + caloricityPer100g +
 				" }";
 	}

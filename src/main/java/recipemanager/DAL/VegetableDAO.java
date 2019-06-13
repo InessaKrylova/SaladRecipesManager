@@ -3,7 +3,7 @@ package main.java.recipemanager.DAL;
 import java.sql.*;
 import java.util.*;
 
-import recipemanager.entities.Vegetable;
+import main.java.recipemanager.entities.Vegetable;
 
 public class VegetableDAO {
    

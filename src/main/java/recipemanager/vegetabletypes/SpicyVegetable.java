@@ -1,6 +1,6 @@
 package main.java.recipemanager.vegetabletypes;
 
-import recipemanager.entities.Vegetable;
+import main.java.recipemanager.entities.Vegetable;
 
 public class SpicyVegetable extends Vegetable {
 	

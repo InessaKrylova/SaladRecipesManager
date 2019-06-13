@@ -22,8 +22,13 @@ public class DBConnector {
         String login = property.getProperty("db.login");
         String password = property.getProperty("db.password");
 
-        Class.forName("org.postgresql.Driver");
-        con = DriverManager.getConnection(url, login, password);
+        try {
+            Class.forName("org.postgresql.Driver");
+            con = DriverManager.getConnection(url, login, password);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         return con;
     }      
 }

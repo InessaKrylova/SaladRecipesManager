@@ -1,6 +1,6 @@
 package main.java.recipemanager.helpers;
 
-import recipemanager.entities.Ingredient;
+import main.java.recipemanager.entities.Ingredient;
 
 public class CaloriesComparator implements java.util.Comparator<Ingredient>{
 	

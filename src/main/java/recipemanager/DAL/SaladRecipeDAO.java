@@ -8,8 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import recipemanager.entities.Ingredient;
-import recipemanager.entities.SaladRecipe;
+import main.java.recipemanager.entities.Ingredient;
+import main.java.recipemanager.entities.SaladRecipe;
 
 public class SaladRecipeDAO {
 	

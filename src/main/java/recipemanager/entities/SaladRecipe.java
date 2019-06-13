@@ -1,7 +1,7 @@
 package main.java.recipemanager.entities;
 
-import recipemanager.helpers.CaloriesComparator;
-import recipemanager.helpers.WeightComparator;
+import main.java.recipemanager.helpers.CaloriesComparator;
+import main.java.recipemanager.helpers.WeightComparator;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -85,8 +85,9 @@ public class SaladRecipe extends Entity {
 
 	@Override
 	public String toString() {
-		return "SaladRecipe{ " +
-				"ingredients=" + ingredients +
+		return "SaladRecipe { " +
+				"id=" + super.getId() +
+				", ingredients=" + ingredients +
 				", title='" + title + '\'' +
 				", caloricity=" + caloricity +
 				" }";

@@ -48,11 +48,11 @@ public class Ingredient extends Entity {
 
 	@Override
 	public String toString() {
-		return "Ingredient{" +
-				"vegetable=" + vegetable +
+		return "Ingredient { " +
+				"vegetableId=" + vegetable.getId() +
 				", recipeId=" + recipeId +
 				", caloricity=" + caloricity +
 				", weight=" + weight +
-				'}';
+				" }";
 	}
 }

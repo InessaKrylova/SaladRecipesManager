@@ -1,27 +1,29 @@
 package main.java.recipemanager.common;
 
-import recipemanager.DAL.SaladRecipeDAO;
-import recipemanager.DAL.VegetableDAO;
-import recipemanager.entities.SaladRecipe;
+import main.java.recipemanager.DAL.IngredientDAO;
+import main.java.recipemanager.DAL.SaladRecipeDAO;
+import main.java.recipemanager.DAL.VegetableDAO;
 
 public class Main
 {
     public static void main( String[] args )
     {
-        //VegetableDAO vegetableDAO = new VegetableDAO();
-        //vegetableDAO.create("Морковь", 25, 3); - работает
+        VegetableDAO vegetableDAO = new VegetableDAO();
+        //vegetableDAO.create("Огурец", 15, 1); - работает
         //vegetableDAO.getById(2); - работает
         //vegetableDAO.getByTitle("Морковь"); - работает
         //vegetableDAO.getAllVegetables(); - работает
         //vegetableDAO.remove(2); - работает
 
-        SaladRecipeDAO recipeDAO = new SaladRecipeDAO();
+        //SaladRecipeDAO recipeDAO = new SaladRecipeDAO();
         //recipeDAO.getAllRecipes(); - работает
-        //recipeDAO.create("Винегрет"); - работает, но проверить ещё
-        //recipeDAO.remove(7); - работает
+        //recipeDAO.create("Винегрет"); //- работает
+        //recipeDAO.remove(8); //- работает
         //recipeDAO.getById(8); - работает
 
-
+        IngredientDAO ingredientDAO = new IngredientDAO();
+        //ingredientDAO.create(9, 7, 300.0); - работает
+        ingredientDAO.getAllIngredients();
         //Chef chef = new Chef();
         //chef.showOptions();
     }

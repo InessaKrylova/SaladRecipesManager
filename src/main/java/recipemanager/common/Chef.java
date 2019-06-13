@@ -1,9 +1,9 @@
 package main.java.recipemanager.common;
 
-import recipemanager.DAL.IngredientDAO;
-import recipemanager.DAL.SaladRecipeDAO;
-import recipemanager.DAL.VegetableDAO;
-import recipemanager.entities.Vegetable;
+import main.java.recipemanager.DAL.IngredientDAO;
+import main.java.recipemanager.DAL.SaladRecipeDAO;
+import main.java.recipemanager.DAL.VegetableDAO;
+import main.java.recipemanager.entities.Vegetable;
 
 import java.lang.reflect.Constructor;
 import java.util.InputMismatchException;
