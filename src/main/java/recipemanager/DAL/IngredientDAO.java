@@ -46,16 +46,16 @@ public class IngredientDAO {
     		 Statement statement = connection.createStatement();
     		 ResultSet resultSet = statement.executeQuery(GET_INGREDIENT_BY_ID +id)){
             while(resultSet.next()) {
-				Vegetable vegetable = new VegetableDAO().getById(resultSet.getInt("vegetable"));
+				Vegetable vegetable = new VegetableDAO().getById(resultSet.getInt("vegetable_id"));
 				ingredient = new Ingredient(
             			id,
 						vegetable,
 						resultSet.getDouble("weight"),
-            			resultSet.getInt("recipeId")
+            			resultSet.getInt("recipe_id")
                 );
             }
         } catch (Exception ex) {
-        	System.out.println(EXCEPTION_IN_RESULTSET);
+        	ex.printStackTrace();//System.out.println(EXCEPTION_IN_RESULTSET);
         }
 		System.out.println(ingredient == null
 			? "Ingredient is not found"
@@ -106,7 +106,7 @@ public class IngredientDAO {
 	            	);
 	            }
 	        } catch (SQLException | NullPointerException ex) {
-	        	//System.out.println(EXCEPTION_IN_RESULTSET);
+	        	System.out.println(EXCEPTION_IN_RESULTSET);
 	        }
 	    } catch (Exception ex) {
 	    	System.out.println(EXCEPTION_IN_STATEMENT);
@@ -121,7 +121,7 @@ public class IngredientDAO {
     	try (Connection connection = DBConnector.openConnection();
     		 Statement statement = connection.createStatement()) {
 	    	statement.execute(REMOVE_INGREDIENT +id);
-	    	System.out.println("Rate with id="+id+" successfully removed");
+	    	System.out.println("Ingredient with id="+id+" successfully removed");
         } catch (Exception ex) {
             System.out.println(EXCEPTION_IN_STATEMENT);
         }

@@ -1,8 +1,6 @@
 package main.java.recipemanager.common;
 
-import main.java.recipemanager.DAL.IngredientDAO;
-import main.java.recipemanager.DAL.SaladRecipeDAO;
-import main.java.recipemanager.DAL.VegetableDAO;
+import main.java.recipemanager.DAL.*;
 import main.java.recipemanager.entities.Vegetable;
 
 import java.lang.reflect.Constructor;
