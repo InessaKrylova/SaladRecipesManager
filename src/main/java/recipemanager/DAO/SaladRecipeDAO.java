@@ -21,8 +21,8 @@ public class SaladRecipeDAO {
 	
     public SaladRecipe create(String title) {
     	SaladRecipe recipe =  null;
-    	try (Connection connection = DataBaseConnector.openConnection();
-			 PreparedStatement statement = connection.prepareStatement(CREATE_RECIPE)) {
+    	try (Connection connection = DataBaseConnector.getConnection();
+             PreparedStatement statement = connection.prepareStatement(CREATE_RECIPE)) {
     		statement.setString(1, title);
     		try (ResultSet rs = statement.executeQuery()) {
 	            while(rs.next()) {
@@ -34,15 +34,12 @@ public class SaladRecipeDAO {
 	    } catch (Exception ex) {
 	    	System.out.println(EXCEPTION_IN_STATEMENT);
 	    }
-		System.out.println(recipe == null
-			? "SaladRecipe is not created"
-			: recipe.toString());
     	return recipe;
     }
 	
 	public void remove(int id){
-    	try (Connection connection = DataBaseConnector.openConnection();
-			 Statement statement = connection.createStatement()) {
+    	try (Connection connection = DataBaseConnector.getConnection();
+             Statement statement = connection.createStatement()) {
 
 			IngredientDAO ingredientDAO = new IngredientDAO();
 			ingredientDAO.removeIngredientsWithRecipeId(id);
@@ -56,11 +53,12 @@ public class SaladRecipeDAO {
     
     public SaladRecipe getById(int id) {
         SaladRecipe recipe = null;
-        try(Connection connection = DataBaseConnector.openConnection();
-        	Statement statement = connection.createStatement();
-        	ResultSet resultSet = statement.executeQuery(GET_RECIPE_BY_ID+id)){
+        try(Connection connection = DataBaseConnector.getConnection();
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(GET_RECIPE_BY_ID+id)){
             while (resultSet.next()){                    
             	recipe = new SaladRecipe(id, resultSet.getString("title"));
+            	//TODO ингредиенты не извлекаются
             }
         } catch (Exception ex) {
         	System.out.println(EXCEPTION_IN_RESULT_SET);
@@ -70,9 +68,9 @@ public class SaladRecipeDAO {
     
     public List<SaladRecipe> getAllRecipes() {
         List<SaladRecipe> list = new ArrayList<>();
-        try(Connection connection = DataBaseConnector.openConnection();
-        	Statement statement = connection.createStatement();
-        	ResultSet resultSet = statement.executeQuery("SELECT * FROM recipe")){
+        try(Connection connection = DataBaseConnector.getConnection();
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM recipe")){
             while (resultSet.next()){                    
             	list.add(new SaladRecipe(
             		resultSet.getInt("id"),

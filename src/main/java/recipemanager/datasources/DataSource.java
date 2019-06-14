@@ -1,6 +1,9 @@
 package main.java.recipemanager.datasources;
 
 public interface DataSource {
-    //TODO
-    static void openConnection() {}
+    /**
+     * Implemented methods should return true, if connection was opened successfully.
+     * @return boolean
+     */
+     boolean openConnection();
 }

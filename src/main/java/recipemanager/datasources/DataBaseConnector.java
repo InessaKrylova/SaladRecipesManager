@@ -1,18 +1,31 @@
 package main.java.recipemanager.datasources;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.Properties;
 
-public class DataBaseConnector implements DataSource{
+public class DataBaseConnector {
 
-    private static Connection con = null;
+    private static Connection connection = null;
+    private static String EXC_LOCATION = " while openConnection() in DataBaseConnector !";
 
-    public static Connection openConnection() throws Exception {
+    public static boolean openConnection() {
         Properties property = new Properties();
-        FileInputStream fis = new FileInputStream("src/main/resources/config.properties");
-        property.load(fis);
+        try {
+            FileInputStream fis = new FileInputStream("src/main/resources/config.properties");
+            property.load(fis);
+
+        } catch (FileNotFoundException e) {
+            System.out.println("FileNotFoundException"+EXC_LOCATION);
+            return false;
+        } catch (IOException e) {
+            System.out.println("IOException"+EXC_LOCATION);
+            return false;
+        }
 
         String url = property.getProperty("db.url");
         String login = property.getProperty("db.login");
@@ -20,11 +33,20 @@ public class DataBaseConnector implements DataSource{
 
         try {
             Class.forName("org.postgresql.Driver");
-            con = DriverManager.getConnection(url, login, password);
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            System.out.println("ClassNotFoundException"+EXC_LOCATION);
+            return false;
         }
+        try {
+            connection = DriverManager.getConnection(url, login, password);
+            return true;
+        }catch (SQLException e) {
+            System.out.println("SQLException"+EXC_LOCATION);
+            return false;
+        }
+    }
 
-        return con;
-    }      
+    public static Connection getConnection() {
+        return openConnection() ? connection : null;
+    }
 }

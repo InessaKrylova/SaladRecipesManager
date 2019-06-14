@@ -38,8 +38,8 @@ public class FileConnector implements DataSource {
         for (int i = 0; i < staffList.getLength(); i++) {
             Element staff = (Element) staffList.item(i);
             data.put("staffId", staff.getAttribute("id"));
-            data.put("staffFirstName", staff.getElementsByTagName("firstName").item(0).getTextContent());
-            data.put("staffLastName", staff.getElementsByTagName("lastName").item(0).getTextContent());
+            data.put("staffFirstName", staff.getElementsByTagName("firstname").item(0).getTextContent());
+            data.put("staffLastName", staff.getElementsByTagName("lastname").item(0).getTextContent());
             data.put("staffPosition",  staff.getElementsByTagName("position").item(0).getTextContent());
         }
 

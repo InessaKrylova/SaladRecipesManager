@@ -19,7 +19,7 @@ public class IngredientDAO {
 	
 	public List<Ingredient> getIngredientsByRecipeId(int recipeId) {
         List<Ingredient> list = new ArrayList<>();
-        try (Connection connection = DataBaseConnector.openConnection();
+        try (Connection connection = DataBaseConnector.getConnection();
 			 Statement statement = connection.createStatement();
 			 ResultSet resultSet = statement.executeQuery(GET_INGREDIENTS_BY_RECIPE +recipeId)) {
              while(resultSet.next()) {
@@ -43,7 +43,7 @@ public class IngredientDAO {
 
     public Ingredient getById(int id) {
 		Ingredient ingredient = null;
-    	try (Connection connection = DataBaseConnector.openConnection();
+    	try (Connection connection = DataBaseConnector.getConnection();
 			 Statement statement = connection.createStatement();
 			 ResultSet resultSet = statement.executeQuery(GET_INGREDIENT_BY_ID +id)){
             while(resultSet.next()) {
@@ -66,7 +66,7 @@ public class IngredientDAO {
     
     public List<Ingredient> getAllIngredients() {
         List<Ingredient> list = new ArrayList<>();
-        try(Connection connection = DataBaseConnector.openConnection();
+        try(Connection connection = DataBaseConnector.getConnection();
 			Statement statement = connection.createStatement();
 			ResultSet resultSet = statement.executeQuery(GET_ALL_INGREDIENTS)) {
             while(resultSet.next()) {
@@ -90,7 +90,7 @@ public class IngredientDAO {
     public Ingredient create(int recipeId, int vegetableId, double weight) {
 		Ingredient ingredient = null;
 		System.out.println(CREATE_INGREDIENT);
-    	try (Connection connection = DataBaseConnector.openConnection();
+    	try (Connection connection = DataBaseConnector.getConnection();
 			 PreparedStatement statement = connection.prepareStatement(CREATE_INGREDIENT)) {
 	        statement.setInt(1, vegetableId);
 	        statement.setInt(2, recipeId);
@@ -119,7 +119,7 @@ public class IngredientDAO {
     }
     
 	public void remove(int id){
-    	try (Connection connection = DataBaseConnector.openConnection();
+    	try (Connection connection = DataBaseConnector.getConnection();
 			 Statement statement = connection.createStatement()) {
 	    	statement.execute(REMOVE_INGREDIENT +id);
 	    	System.out.println("Ingredient with id="+id+" successfully removed");
@@ -129,7 +129,7 @@ public class IngredientDAO {
     }
 
 	public void removeIngredientsWithRecipeId(int recipeId){
-		try (Connection connection = DataBaseConnector.openConnection();
+		try (Connection connection = DataBaseConnector.getConnection();
 			 Statement statement = connection.createStatement()) {
 			statement.execute(REMOVE_INGREDIENTS_FROM_RECIPE +recipeId);
 			System.out.println("Ingredients successfully removed from recipe with id="+recipeId);
