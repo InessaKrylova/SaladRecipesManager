@@ -25,6 +25,6 @@ public class Main
         //ingredientDAO.remove(21); - работает
 
         Chef chef = new Chef();
-        chef.showOptions();
+        //chef.showOptions();
     }
 }

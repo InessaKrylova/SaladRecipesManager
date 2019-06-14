@@ -8,6 +8,7 @@ import main.java.recipemanager.entities.Vegetable;
 import java.lang.reflect.Constructor;
 import java.util.InputMismatchException;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Chef {
@@ -25,11 +26,14 @@ public class Chef {
 		this.vegetableDAO = new VegetableDAO();
 	}
 
-
-
 	private void initializeChef() {
 		FileConnector fileConnector = new FileConnector();
-		//TODO: считать из файла chefName и restaurantTitle
+		if (fileConnector.openConnection()) {
+			Map<String, String> data = fileConnector.getFileContent();
+			chefName = data.get("firstname")+" "+data.get("lastname");
+
+		}
+
 	}
 
 	public void showOptions() {
