@@ -37,7 +37,7 @@ public class SaladRecipeDAO {
     	return recipe;
     }
 	
-	public void remove(int id){
+	public boolean remove(int id){
     	try (Connection connection = DataBaseConnector.getConnection();
              Statement statement = connection.createStatement()) {
 
@@ -45,9 +45,10 @@ public class SaladRecipeDAO {
 			ingredientDAO.removeIngredientsWithRecipeId(id);
 
 			statement.execute(REMOVE_RECIPE+id);
-	    	System.out.println("SaladRecipe with id="+id+" successfully removed");
+			return true;
         } catch (Exception ex) {
             System.out.println(EXCEPTION_IN_STATEMENT);
+            return false;
         }
     }               
     
@@ -77,9 +78,9 @@ public class SaladRecipeDAO {
                     resultSet.getString("title")
             	)); 	            	
             }
-        } catch (Exception ex) {
-        	System.out.println(EXCEPTION_IN_RESULT_SET);
-        }
+		} catch (Exception ex) {
+			System.out.println(EXCEPTION_IN_RESULT_SET);
+		}
         return list;
     }
 

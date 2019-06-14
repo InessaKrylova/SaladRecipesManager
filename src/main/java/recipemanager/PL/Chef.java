@@ -64,8 +64,8 @@ public class Chef {
 			System.out.println("\nChoose one of the options:");
 			System.out.println("\t1. Show all salad recipes");
 			System.out.println("\t2. Show recipe with concrete id");
-			System.out.println("\t3. Manage recipe (add/edit/remove)");
-			System.out.println("\t4. Manage ingredient in concrete recipe (add/edit/remove)");
+			System.out.println("\t3. Manage recipe (add/remove)");
+			System.out.println("\t4. Manage ingredient in concrete recipe (add/remove)");
 			System.out.println("\t5. Sort ingredients by calories");
 			System.out.println("\t6. Sort ingredients by weight");
 			System.out.println("\t7. Get ingredients for calories");
@@ -131,6 +131,39 @@ public class Chef {
 				? "SaladRecipe with id="+recipeId+" is not found"
 				: recipe.toString());
 	}
+
+	private void manageRecipe() {
+		choice = -1;
+		System.out.println("\nChoose one of the options:");
+		System.out.println("\t1. Add new recipe");
+		System.out.println("\t2. Remove existing recipe");
+		System.out.println("\t0. Back to all options");
+
+		getUserChoice();
+
+		switch (choice) {
+			case 1:
+				addNewRecipe();
+				break;
+			case 2:
+				removeRecipe();
+				break;
+			case 0:
+				showOptions();
+				break;
+			default:
+				break;
+		}
+	}
+
+	private void removeRecipe() {
+		System.out.print("Enter recipe id: ");
+		int recipeId = scanner.nextInt();
+		System.out.println(saladRecipeDAO.remove(recipeId)
+				? "SaladRecipe with id="+recipeId+" successfully removed"
+				: "SaladRecipe with id="+recipeId+" is not removed !"
+		);
+	}
 	///</editor-fold>
 
 	private void sortIngredientsByWeight() {
@@ -174,48 +207,8 @@ public class Chef {
 
 	}
 
-	private void manageRecipe() {
-		choice = -1;
-		System.out.println("\nChoose one of the options:");
-		System.out.println("\t1. Add new recipe");
-		System.out.println("\t2. Edit existing recipe");
-		System.out.println("\t3. Remove existing recipe");
-		System.out.println("\t0. Back to all options");
-
-		getUserChoice();
-
-		switch (choice) {
-			case 1:
-				addNewRecipe();
-				break;
-			case 2:
-				editRecipe();
-				break;
-			case 3:
-				removeRecipe();
-				break;
-			case 0:
-				showOptions();
-				break;
-			default:
-				break;
-		}
-	}
-
-	private void removeRecipe() {
-		//TODO
-		System.out.print("Enter recipe id:");
-		int recipeId = scanner.nextInt();
-	}
-
-	private void editRecipe() {
-		//TODO
-
-		int recipeId = scanner.nextInt();
-	}
-
 	private void addNewRecipe() {
-		System.out.print("Enter recipe title :");
+		System.out.print("Enter recipe title: ");
 		String title = scanner.nextLine(); //TODO проверочка на корректность ввода + тут лага с названием с пробелом
 		SaladRecipe newRecipe = saladRecipeDAO.create(title);
 		System.out.println();
