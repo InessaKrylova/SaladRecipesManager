@@ -1,8 +1,4 @@
-package main.java.recipemanager.common;
-
-import main.java.recipemanager.DAL.IngredientDAO;
-import main.java.recipemanager.DAL.SaladRecipeDAO;
-import main.java.recipemanager.DAL.VegetableDAO;
+package main.java.recipemanager.PL;
 
 public class Main
 {
@@ -28,7 +24,7 @@ public class Main
         //ingredientDAO.removeIngredientsWithRecipeId(9); - работает
         //ingredientDAO.remove(21); - работает
 
-        //Chef chef = new Chef();
-        //chef.showOptions();
+        Chef chef = new Chef();
+        chef.showOptions();
     }
 }

@@ -1,18 +1,14 @@
-package main.java.recipemanager.DAL;
+package main.java.recipemanager.datasources;
 
 import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Properties;
 
-public class DBConnector {
+public class DataBaseConnector implements DataSource{
 
     private static Connection con = null;
 
-    public static void closeConnection() throws Exception {
-        con.close();
-    }
-    
     public static Connection openConnection() throws Exception {
         Properties property = new Properties();
         FileInputStream fis = new FileInputStream("src/main/resources/config.properties");

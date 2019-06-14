@@ -1,10 +1,12 @@
-package main.java.recipemanager.common;
+package main.java.recipemanager.PL;
 
-import main.java.recipemanager.DAL.*;
+import main.java.recipemanager.DAO.*;
+import main.java.recipemanager.entities.SaladRecipe;
 import main.java.recipemanager.entities.Vegetable;
 
 import java.lang.reflect.Constructor;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 public class Chef {
@@ -21,6 +23,8 @@ public class Chef {
 		this.vegetableDAO = new VegetableDAO();
 	}
 
+
+
 	private void initializeChef() {
 
 		//TODO: считать из файла chefName и restarauntTitle
@@ -28,63 +32,63 @@ public class Chef {
 
 	public void showOptions() {
 		Scanner scanner = new Scanner(System.in);
-		int choice = -1;
+		Options choice = Options.valueOf(-1);
 
 		System.out.println("Hello! My name is " + chefName + ". Welcome to "+restarauntTitle+"!");
 		System.out.println("What do you want to cook today?");
 
-		while (choice != 0) {
+		while (!choice.equals(Options.Exit)) {
 			System.out.println("\nChoose one of the options:");
-			System.out.println("1. Rename salad");
-			System.out.println("2. Show recipe");
-			System.out.println("3. Add ingredient");
-			System.out.println("4. Sort ingredients by calories");
-			System.out.println("5. Sort ingredients by weight");
-			System.out.println("6. Get ingredients for calories");
+			System.out.println("1. Show all salad recipes");
+			System.out.println("2. Show recipe with concrete id");
+			System.out.println("3. Add/edit/remove recipe");
+			System.out.println("4. Add/edit/remove ingredient in concrete recipe");
+			System.out.println("5. Sort ingredients by calories");
+			System.out.println("6. Sort ingredients by weight");
+			System.out.println("7. Get ingredients for calories");
 			System.out.println("0. Exit");
 
 			try {
-				choice = scanner.nextInt();
+				choice = Options.valueOf(scanner.nextInt());
 			}
 			catch (InputMismatchException e) {
 				System.out.println("Wrong option!");
 				scanner.next();
-				choice = -1;
+				choice = Options.valueOf(-1);
 			}
 
 			switch(choice) {
-				case 1:
-
-					System.out.println("Name your salad:");
-					//salad.setname(scanner.next());
+				case ShowAllRecipes:
+					showAllRecipes();
 					break;
 
-				case 2:
-					//salad.showRecipe();
+				case ShowRecipeWithId:
+					System.out.print("Enter recipe id:");
+					int id = scanner.nextInt();
+					showRecipeWithId(id);
 					break;
 
-				case 3:
-					/*vegetable = getIngredient(scanner);
-					if (vegetable != null) {
-						if (!salad.addIngredient(vegetable)) {
-							System.out.println("Cannot add ingredient!");
-						}
-					}*/
+				case AddEditRemoveRecipe:
+
 					break;
 
-				case 4:
-					//salad.sortIngredientsByCalories();
+				case AddEditRemoveIngredient:
+
 					break;
 
-				case 5:
-					//salad.sortIngredientsByWeight();
-					break;
-
-				case 6:
+				case SortIngredientsByCalories:
 					showIngredientsForCalories(scanner);
 					break;
 
-				case 0:
+				case SortIngredientsByWeight:
+					showIngredientsForCalories(scanner);
+					break;
+
+				case GetIngredientsForCalories:
+
+					break;
+
+				case Exit:
 					System.exit(0);
 					break;
 
@@ -94,6 +98,21 @@ public class Chef {
 		}
 
 		scanner.close();
+	}
+
+	private void showAllRecipes() {
+		List<SaladRecipe> list = saladRecipeDAO.getAllRecipes();
+		System.out.println("All salad recipes:");
+		for (SaladRecipe recipe : list) {
+			System.out.println("\t"+recipe.getId()+". "+recipe.getTitle());
+		}
+	}
+
+	private void showRecipeWithId(int id) {
+		SaladRecipe recipe = saladRecipeDAO.getById(id);
+		System.out.println(recipe == null
+				? "SaladRecipe with id="+id+" is not found"
+				: recipe.toString());
 	}
 
 	public Vegetable getIngredient(Scanner scanner) {

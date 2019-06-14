@@ -1,4 +1,5 @@
-package main.java.recipemanager.DAL;
+package main.java.recipemanager.DAO;
+import main.java.recipemanager.datasources.DataBaseConnector;
 import main.java.recipemanager.entities.Ingredient;
 import main.java.recipemanager.entities.Vegetable;
 
@@ -18,7 +19,7 @@ public class IngredientDAO {
 	
 	public List<Ingredient> getIngredientsByRecipeId(int recipeId) {
         List<Ingredient> list = new ArrayList<>();
-        try (Connection connection = DBConnector.openConnection();
+        try (Connection connection = DataBaseConnector.openConnection();
 			 Statement statement = connection.createStatement();
 			 ResultSet resultSet = statement.executeQuery(GET_INGREDIENTS_BY_RECIPE +recipeId)) {
              while(resultSet.next()) {
@@ -42,9 +43,9 @@ public class IngredientDAO {
 
     public Ingredient getById(int id) {
 		Ingredient ingredient = null;
-    	try (Connection connection = DBConnector.openConnection();
-    		 Statement statement = connection.createStatement();
-    		 ResultSet resultSet = statement.executeQuery(GET_INGREDIENT_BY_ID +id)){
+    	try (Connection connection = DataBaseConnector.openConnection();
+			 Statement statement = connection.createStatement();
+			 ResultSet resultSet = statement.executeQuery(GET_INGREDIENT_BY_ID +id)){
             while(resultSet.next()) {
 				Vegetable vegetable = new VegetableDAO().getById(resultSet.getInt("vegetable_id"));
 				ingredient = new Ingredient(
@@ -55,7 +56,7 @@ public class IngredientDAO {
                 );
             }
         } catch (Exception ex) {
-        	ex.printStackTrace();//System.out.println(EXCEPTION_IN_RESULTSET);
+        	System.out.println(EXCEPTION_IN_RESULTSET);
         }
 		System.out.println(ingredient == null
 			? "Ingredient is not found"
@@ -65,9 +66,9 @@ public class IngredientDAO {
     
     public List<Ingredient> getAllIngredients() {
         List<Ingredient> list = new ArrayList<>();
-        try(Connection connection = DBConnector.openConnection();
-        	Statement statement = connection.createStatement();
-        	ResultSet resultSet = statement.executeQuery(GET_ALL_INGREDIENTS)) {
+        try(Connection connection = DataBaseConnector.openConnection();
+			Statement statement = connection.createStatement();
+			ResultSet resultSet = statement.executeQuery(GET_ALL_INGREDIENTS)) {
             while(resultSet.next()) {
             	Vegetable vegetable = new VegetableDAO().getById(resultSet.getInt("vegetable_id"));
                 list.add(new Ingredient(
@@ -89,8 +90,8 @@ public class IngredientDAO {
     public Ingredient create(int recipeId, int vegetableId, double weight) {
 		Ingredient ingredient = null;
 		System.out.println(CREATE_INGREDIENT);
-    	try (Connection connection = DBConnector.openConnection();
-    		PreparedStatement statement = connection.prepareStatement(CREATE_INGREDIENT)) {
+    	try (Connection connection = DataBaseConnector.openConnection();
+			 PreparedStatement statement = connection.prepareStatement(CREATE_INGREDIENT)) {
 	        statement.setInt(1, vegetableId);
 	        statement.setInt(2, recipeId);
 	        statement.setDouble(3, weight);
@@ -118,8 +119,8 @@ public class IngredientDAO {
     }
     
 	public void remove(int id){
-    	try (Connection connection = DBConnector.openConnection();
-    		 Statement statement = connection.createStatement()) {
+    	try (Connection connection = DataBaseConnector.openConnection();
+			 Statement statement = connection.createStatement()) {
 	    	statement.execute(REMOVE_INGREDIENT +id);
 	    	System.out.println("Ingredient with id="+id+" successfully removed");
         } catch (Exception ex) {
@@ -128,7 +129,7 @@ public class IngredientDAO {
     }
 
 	public void removeIngredientsWithRecipeId(int recipeId){
-		try (Connection connection = DBConnector.openConnection();
+		try (Connection connection = DataBaseConnector.openConnection();
 			 Statement statement = connection.createStatement()) {
 			statement.execute(REMOVE_INGREDIENTS_FROM_RECIPE +recipeId);
 			System.out.println("Ingredients successfully removed from recipe with id="+recipeId);

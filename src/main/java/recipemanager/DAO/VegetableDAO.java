@@ -1,8 +1,9 @@
-package main.java.recipemanager.DAL;
+package main.java.recipemanager.DAO;
 
 import java.sql.*;
 import java.util.*;
 
+import main.java.recipemanager.datasources.DataBaseConnector;
 import main.java.recipemanager.entities.Vegetable;
 
 public class VegetableDAO {
@@ -17,9 +18,9 @@ public class VegetableDAO {
 	
 	public Vegetable getById(int id) {
 		Vegetable vegetable = null;
-        try (Connection connection = DBConnector.openConnection();
-    		 Statement statement = connection.createStatement();
-    		 ResultSet resultSet = statement.executeQuery(GET_VEGETABLE_BY_ID +id)) {
+        try (Connection connection = DataBaseConnector.openConnection();
+			 Statement statement = connection.createStatement();
+			 ResultSet resultSet = statement.executeQuery(GET_VEGETABLE_BY_ID +id)) {
             while(resultSet.next()) {
 				vegetable = Vegetable.getVegetableWithCategory(
 						resultSet.getInt("category"),
@@ -39,7 +40,7 @@ public class VegetableDAO {
 
     public List<Vegetable> getAllVegetables() {
     	List<Vegetable> list = new ArrayList<>();
-    	try (Connection connection = DBConnector.openConnection();
+    	try (Connection connection = DataBaseConnector.openConnection();
        		 Statement statement = connection.createStatement();
        		 ResultSet resultSet = statement.executeQuery(GET_ALL_VEGETABLES)) {
             while(resultSet.next()) {   
@@ -62,7 +63,7 @@ public class VegetableDAO {
 
     public Vegetable getByTitle(String title) {
 		Vegetable vegetable = null;
-        try (Connection connection = DBConnector.openConnection();
+        try (Connection connection = DataBaseConnector.openConnection();
         	PreparedStatement statement = connection.prepareStatement(GET_BY_TITLE))  {
 	        statement.setString(1, title);
         	try (ResultSet resultSet = statement.executeQuery()) {
@@ -87,7 +88,7 @@ public class VegetableDAO {
     
     public Vegetable create(String title, int caloricity, int category) {
 		Vegetable vegetable = null;
-		try (Connection connection = DBConnector.openConnection();
+		try (Connection connection = DataBaseConnector.openConnection();
 			 PreparedStatement statement = connection.prepareStatement(CREATE_VEGETABLE)) {
 			statement.setString(1, title);
 			statement.setInt(2, caloricity);
@@ -109,7 +110,7 @@ public class VegetableDAO {
     }     
     
     public void remove(int id){
-    	try (Connection connection = DBConnector.openConnection();
+    	try (Connection connection = DataBaseConnector.openConnection();
     			Statement statement = connection.createStatement()) {
     		statement.execute(REMOVE_VEGETABLE +id);
 	    	System.out.println("Vegetable with id="+id+" successfully removed");

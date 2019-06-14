@@ -11,6 +11,7 @@ public class Ingredient extends Entity {
 		this.vegetable = vegetable;
 		this.weight = weight;
 		this.recipeId = recipeId;
+		this.caloricity = (int) (vegetable.getCaloricityPer100g() * weight);
 	}
 
     
@@ -27,7 +28,7 @@ public class Ingredient extends Entity {
 	}
 
 	public int getCaloricity() {
-		return (int) (vegetable.getCaloricityPer100g() * weight);
+		return caloricity;
 	}
 
 	public double getWeight() {

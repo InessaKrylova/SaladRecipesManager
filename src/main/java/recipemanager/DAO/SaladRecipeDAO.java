@@ -1,4 +1,4 @@
-package main.java.recipemanager.DAL;
+package main.java.recipemanager.DAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import main.java.recipemanager.entities.Ingredient;
+import main.java.recipemanager.datasources.DataBaseConnector;
 import main.java.recipemanager.entities.SaladRecipe;
 
 public class SaladRecipeDAO {
@@ -21,8 +21,8 @@ public class SaladRecipeDAO {
 	
     public SaladRecipe create(String title) {
     	SaladRecipe recipe =  null;
-    	try (Connection connection = DBConnector.openConnection();
-    		 PreparedStatement statement = connection.prepareStatement(CREATE_RECIPE)) {
+    	try (Connection connection = DataBaseConnector.openConnection();
+			 PreparedStatement statement = connection.prepareStatement(CREATE_RECIPE)) {
     		statement.setString(1, title);
     		try (ResultSet rs = statement.executeQuery()) {
 	            while(rs.next()) {
@@ -41,7 +41,7 @@ public class SaladRecipeDAO {
     }
 	
 	public void remove(int id){
-    	try (Connection connection = DBConnector.openConnection();
+    	try (Connection connection = DataBaseConnector.openConnection();
 			 Statement statement = connection.createStatement()) {
 
 			IngredientDAO ingredientDAO = new IngredientDAO();
@@ -56,7 +56,7 @@ public class SaladRecipeDAO {
     
     public SaladRecipe getById(int id) {
         SaladRecipe recipe = null;
-        try(Connection connection = DBConnector.openConnection();
+        try(Connection connection = DataBaseConnector.openConnection();
         	Statement statement = connection.createStatement();
         	ResultSet resultSet = statement.executeQuery(GET_RECIPE_BY_ID+id)){
             while (resultSet.next()){                    
@@ -65,16 +65,12 @@ public class SaladRecipeDAO {
         } catch (Exception ex) {
         	System.out.println(EXCEPTION_IN_RESULT_SET);
         }
-
-		System.out.println(recipe == null
-			? "SaladRecipe is not found"
-			: recipe.toString());
         return recipe;
     }
     
     public List<SaladRecipe> getAllRecipes() {
         List<SaladRecipe> list = new ArrayList<>();
-        try(Connection connection = DBConnector.openConnection();
+        try(Connection connection = DataBaseConnector.openConnection();
         	Statement statement = connection.createStatement();
         	ResultSet resultSet = statement.executeQuery("SELECT * FROM recipe")){
             while (resultSet.next()){                    
@@ -86,10 +82,6 @@ public class SaladRecipeDAO {
         } catch (Exception ex) {
         	System.out.println(EXCEPTION_IN_RESULT_SET);
         }
-        System.out.println("All salad recipes:");
-        for (SaladRecipe recipe : list) {
-        	System.out.println("\t"+recipe.getId()+". "+recipe.getTitle());
-		}
         return list;
     }
 
