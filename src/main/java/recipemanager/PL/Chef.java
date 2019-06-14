@@ -1,6 +1,7 @@
 package main.java.recipemanager.PL;
 
 import main.java.recipemanager.DAO.*;
+import main.java.recipemanager.datasources.FileConnector;
 import main.java.recipemanager.entities.SaladRecipe;
 import main.java.recipemanager.entities.Vegetable;
 
@@ -11,10 +12,11 @@ import java.util.Scanner;
 
 public class Chef {
 	private String chefName;
-	private String restarauntTitle;
+	private String restaurantTitle;
 	private SaladRecipeDAO saladRecipeDAO;
 	private IngredientDAO ingredientDAO;
 	private VegetableDAO vegetableDAO;
+	private Scanner scanner;
 
 	public Chef() {
 		initializeChef();
@@ -26,15 +28,15 @@ public class Chef {
 
 
 	private void initializeChef() {
-
-		//TODO: считать из файла chefName и restarauntTitle
+		FileConnector fileConnector = new FileConnector();
+		//TODO: считать из файла chefName и restaurantTitle
 	}
 
 	public void showOptions() {
-		Scanner scanner = new Scanner(System.in);
+		scanner = new Scanner(System.in);
 		Options choice = Options.valueOf(-1);
 
-		System.out.println("Hello! My name is " + chefName + ". Welcome to "+restarauntTitle+"!");
+		System.out.println("Hello! My name is " + chefName + ". Welcome to "+restaurantTitle+"!");
 		System.out.println("What do you want to cook today?");
 
 		while (!choice.equals(Options.Exit)) {
@@ -63,29 +65,27 @@ public class Chef {
 					break;
 
 				case ShowRecipeWithId:
-					System.out.print("Enter recipe id:");
-					int id = scanner.nextInt();
-					showRecipeWithId(id);
+					showRecipeWithId();
 					break;
 
 				case AddEditRemoveRecipe:
-
+					manageRecipe();
 					break;
 
 				case AddEditRemoveIngredient:
-
+					manageIngredient();
 					break;
 
 				case SortIngredientsByCalories:
-					showIngredientsForCalories(scanner);
+					//TODO
 					break;
 
 				case SortIngredientsByWeight:
-					showIngredientsForCalories(scanner);
+					//TODO
 					break;
 
 				case GetIngredientsForCalories:
-
+					showIngredientsForCalories(scanner);
 					break;
 
 				case Exit:
@@ -100,22 +100,14 @@ public class Chef {
 		scanner.close();
 	}
 
-	private void showAllRecipes() {
-		List<SaladRecipe> list = saladRecipeDAO.getAllRecipes();
-		System.out.println("All salad recipes:");
-		for (SaladRecipe recipe : list) {
-			System.out.println("\t"+recipe.getId()+". "+recipe.getTitle());
-		}
-	}
+	private void manageIngredient() {
+		System.out.print("Enter recipe id:");
+		int recipeId = scanner.nextInt();
+		System.out.print("Enter ingredient id:");
+		int ingredientId = scanner.nextInt();
+		//TODO
 
-	private void showRecipeWithId(int id) {
-		SaladRecipe recipe = saladRecipeDAO.getById(id);
-		System.out.println(recipe == null
-				? "SaladRecipe with id="+id+" is not found"
-				: recipe.toString());
-	}
 
-	public Vegetable getIngredient(Scanner scanner) {
 		String ingredientName;
 		double weight;
 
@@ -130,12 +122,36 @@ public class Chef {
 			System.out.println("Wrong weight!");
 			scanner.next();
 
-			return null;
+			//return null;
 		}
 
-		return makeWithReflection(ingredientName, weight);
+		//return makeWithReflection(ingredientName, weight);
+
 	}
 
+	private void manageRecipe() {
+		System.out.print("Enter recipe id:");
+		int recipeId = scanner.nextInt();
+		//TODO
+
+	}
+
+	private void showAllRecipes() {
+		List<SaladRecipe> list = saladRecipeDAO.getAllRecipes();
+		System.out.println("All salad recipes:");
+		for (SaladRecipe recipe : list) {
+			System.out.println("\t"+recipe.getId()+". "+recipe.getTitle());
+		}
+	}
+
+	private void showRecipeWithId() {
+		System.out.print("Enter recipe id:");
+		int recipeId = scanner.nextInt();
+		SaladRecipe recipe = saladRecipeDAO.getById(recipeId);
+		System.out.println(recipe == null
+				? "SaladRecipe with id="+recipeId+" is not found"
+				: recipe.toString());
+	}
 
 	@Deprecated
 	public Vegetable makeWithReflection(String ingrName, double weight) {
@@ -161,7 +177,7 @@ public class Chef {
 	public void showIngredientsForCalories(Scanner scanner) {
 		double lowerCalories, upperCalories;
 		
-		System.out.println("Enter the lower limit:");
+		System.out.print("Enter the lower limit:");
 		try {
 			lowerCalories = scanner.nextDouble();
 		}
@@ -172,7 +188,7 @@ public class Chef {
 			return;
 		}
 		
-		System.out.println("Enter the upper limit:");
+		System.out.print("Enter the upper limit:");
 		try {
 			upperCalories = scanner.nextDouble();
 		}
@@ -183,6 +199,6 @@ public class Chef {
 			return;
 		}
 		
-		//salad.showIngredientsByCalories(lowerCalories, upperCalories);
+		//saladRecipeDAO.showIngredientsByCalories(lowerCalories, upperCalories);
 	}
 }
