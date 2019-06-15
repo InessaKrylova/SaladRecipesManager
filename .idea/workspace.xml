@@ -1,41 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d3f12022-a972-4a0f-a4e1-9c3109d790fd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SaladRecipesManager/main/java/recipemanager/DAO/IngredientDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SaladRecipesManager/main/java/recipemanager/DAO/IngredientDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SaladRecipesManager/main/java/recipemanager/DAO/SaladRecipeDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SaladRecipesManager/main/java/recipemanager/DAO/SaladRecipeDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SaladRecipesManager/main/java/recipemanager/DAO/VegetableDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SaladRecipesManager/main/java/recipemanager/DAO/VegetableDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SaladRecipesManager/main/java/recipemanager/PL/Chef$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SaladRecipesManager/main/java/recipemanager/PL/Chef$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SaladRecipesManager/main/java/recipemanager/PL/Chef.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SaladRecipesManager/main/java/recipemanager/PL/Chef.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SaladRecipesManager/main/java/recipemanager/datasources/DataBaseConnector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SaladRecipesManager/main/java/recipemanager/datasources/DataBaseConnector.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SaladRecipesManager/main/java/recipemanager/datasources/FileConnector.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SaladRecipesManager/main/java/recipemanager/entities/SaladRecipe.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SaladRecipesManager/main/java/recipemanager/entities/SaladRecipe.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SaladRecipesManager/main/java/recipemanager/exceptions/WrongElementIdException.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SaladRecipesManager/main/java/recipemanager/exceptions/WrongElementIdException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SaladRecipesManager/main/java/recipemanager/helpers/CaloriesComparator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SaladRecipesManager/main/java/recipemanager/helpers/WeightComparator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/recipemanager/DAO/IngredientDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/recipemanager/DAO/IngredientDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/recipemanager/DAO/SaladRecipeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/recipemanager/DAO/SaladRecipeDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/recipemanager/DAO/VegetableDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/recipemanager/DAO/VegetableDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/recipemanager/PL/Chef.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/recipemanager/presentation_layer/Chef.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/recipemanager/PL/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/recipemanager/presentation_layer/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/recipemanager/PL/Options.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/recipemanager/presentation_layer/Options.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/recipemanager/datasources/DataBaseConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/recipemanager/data_source_connectors/DataBaseConnector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/recipemanager/datasources/DataSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/recipemanager/data_source_connectors/DataSourceConnector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/recipemanager/datasources/FileConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/recipemanager/data_source_connectors/XMLFileConnector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/recipemanager/entities/SaladRecipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/recipemanager/entities/SaladRecipe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/recipemanager/entities/Vegetable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/recipemanager/entities/Vegetable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/recipemanager/entities/vegetabletypes/CabbageVegetable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/recipemanager/entities/vegetable_types/CabbageVegetable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/recipemanager/entities/vegetabletypes/CucurbitaceaeVegetable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/recipemanager/entities/vegetable_types/CucurbitaceaeVegetable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/recipemanager/entities/vegetabletypes/NightshadeVegetable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/recipemanager/entities/vegetable_types/NightshadeVegetable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/recipemanager/entities/vegetabletypes/RootVegetable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/recipemanager/entities/vegetable_types/RootVegetable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/recipemanager/entities/vegetabletypes/SpicyVegetable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/recipemanager/entities/vegetable_types/SpicyVegetable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/recipemanager/exceptions/CreatingElementException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/recipemanager/custom_exceptions/CreatingElementException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/recipemanager/exceptions/WrongElementIdException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/recipemanager/custom_exceptions/WrongElementIdException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/recipemanager/exceptions/XMLFileContentException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/recipemanager/custom_exceptions/XMLFileContentException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/recipemanager/helpers/CaloriesComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/recipemanager/ingredient_comparators/CaloriesComparator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/recipemanager/helpers/WeightComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/recipemanager/ingredient_comparators/WeightComparator.java" afterDir="false" />
-    </list>
+    <list default="true" id="d3f12022-a972-4a0f-a4e1-9c3109d790fd" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
