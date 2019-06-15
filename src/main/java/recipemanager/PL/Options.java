@@ -6,11 +6,13 @@ import java.util.Map;
 public enum Options {
     ShowAllRecipes (1),
     ShowRecipeWithId (2),
-    AddEditRemoveRecipe(3),
-    AddEditRemoveIngredient(4),
-    SortIngredientsByCalories(5),
-    SortIngredientsByWeight(6),
-    GetIngredientsForCalories(7),
+    AddRecipe(3),
+    RemoveRecipe(4),
+    AddIngredient(5),
+    RemoveIngredient(6),
+    SortIngredientsByCalories(7),
+    SortIngredientsByWeight(8),
+    GetIngredientsForCalories(9),
     Exit(0),
     WrongChoice(-1);
 

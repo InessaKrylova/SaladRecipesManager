@@ -6,7 +6,6 @@ import main.java.recipemanager.entities.Ingredient;
 import main.java.recipemanager.entities.SaladRecipe;
 import main.java.recipemanager.entities.Vegetable;
 
-import java.lang.reflect.Constructor;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Map;
@@ -65,11 +64,13 @@ public class Chef {
 			System.out.println("\nChoose one of the options:");
 			System.out.println("\t1. Show all salad recipes");
 			System.out.println("\t2. Show recipe with concrete id");
-			System.out.println("\t3. Manage recipe (add/remove)");
-			System.out.println("\t4. Manage ingredient in concrete recipe (add/remove)");
-			System.out.println("\t5. Sort ingredients by calories");
-			System.out.println("\t6. Sort ingredients by weight");
-			System.out.println("\t7. Get ingredients for calories");
+			System.out.println("\t3. Add new recipe");
+			System.out.println("\t4. Remove existing recipe");
+			System.out.println("\t5. Add new ingredient to recipe");
+			System.out.println("\t6. Remove ingredient from recipe");
+			System.out.println("\t7. Sort ingredients by calories");
+			System.out.println("\t8. Sort ingredients by weight");
+			System.out.println("\t9. Get ingredients for calories");
 			System.out.println("\t0. Exit");
 
 			getUserChoice();
@@ -81,15 +82,25 @@ public class Chef {
 					break;
 
 				case ShowRecipeWithId:
-					showRecipeWithId();
+					System.out.print("Enter recipe id: ");
+					int recipeId = scanner.nextInt();
+					showRecipeWithId(recipeId);
 					break;
 
-				case AddEditRemoveRecipe:
-					manageRecipe();
+				case AddRecipe:
+					addNewRecipe();
 					break;
 
-				case AddEditRemoveIngredient:
-					manageIngredient();
+				case RemoveRecipe:
+					removeRecipe();
+					break;
+
+				case AddIngredient:
+					addNewIngredient();
+					break;
+
+				case RemoveIngredient:
+					removeIngredient();
 					break;
 
 				case SortIngredientsByCalories:
@@ -124,37 +135,11 @@ public class Chef {
 		}
 	}
 
-	private void showRecipeWithId() {
-		System.out.print("Enter recipe id: ");
-		int recipeId = scanner.nextInt();
+	private void showRecipeWithId(int recipeId) {
 		SaladRecipe recipe = saladRecipeDAO.getById(recipeId);
 		System.out.println(recipe == null
 				? "SaladRecipe with id="+recipeId+" is not found"
 				: recipe.toString());
-	}
-
-	private void manageRecipe() {
-		choice = -1;
-		System.out.println("\nChoose one of the options:");
-		System.out.println("\t1. Add new recipe");
-		System.out.println("\t2. Remove existing recipe");
-		System.out.println("\t0. Back to all options");
-
-		getUserChoice();
-
-		switch (choice) {
-			case 1:
-				addNewRecipe();
-				break;
-			case 2:
-				removeRecipe();
-				break;
-			case 0:
-				showOptions();
-				break;
-			default:
-				break;
-		}
 	}
 
 	private void removeRecipe() {
@@ -184,79 +169,56 @@ public class Chef {
 		System.out.println(salad.ingredientsToString());
 	}
 
-	private void manageIngredient() {
-		choice = -1;
-		System.out.println("\nChoose one of the options:");
-		System.out.println("\t1. Add new ingredient to existing recipe");
-		System.out.println("\t2. Remove ingredient from existing recipe");
-		System.out.println("\t0. Back to all options");
-
-		getUserChoice();
-
-		switch (choice) {
-			case 1:
-				addNewIngredient();
-				break;
-			case 2:
-				removeIngredient();
-				break;
-			case 0:
-				showOptions();
-				break;
-			default:
-				break;
-		}
-	}
-	///</editor-fold>
-
 	private void addNewIngredient() {
-		
-		System.out.print("Enter recipe id:");
+		showAllRecipes();
+		System.out.print("Enter recipe id: ");
 		int recipeId = scanner.nextInt();
 
-		System.out.print("Enter ingredient id:");
-		int ingredientId = scanner.nextInt();
-		//TODO
-		//System.out.println(vegetable == null
-		//		? "Vegetable is not found"
-		//		: vegetable.toString());
+		double weight = 0.0;
+		showRecipeWithId(recipeId);
 
-		//System.out.println(ingredient == null
-		//		? "Ingredient is not found"
-		//		: ingredient.toString());
-
-		//System.out.println(ingredient == null
-		//		? "Ingredient is not created"
-		//		: ingredient.toString());
-
-		System.out.println("Ingredients successfully removed from recipe with id="+recipeId);
-
-		String ingredientName;
-		double weight;
-
-		System.out.println("Enter the ingredient name:");
-		ingredientName = scanner.next();
-
-		System.out.println("Enter the weight (in gramms):");
-
-		try {
-			weight = scanner.nextDouble();
-		} catch (InputMismatchException e) {
-			System.out.println("Wrong weight!");
-			scanner.next();
-
-			//return null;
+		List<Vegetable> vegetableList = vegetableDAO.getAllVegetables();
+		System.out.println("All vegetables:");
+		for (Vegetable vegetable : vegetableList) {
+			System.out.println("\t"+vegetable.toString());
 		}
+		System.out.print("Enter vegetable id: ");
+		int vegetableId = scanner.nextInt();
+		if (vegetableDAO.getById(vegetableId)== null) {
+			System.out.println("Wrong vegetable id!");
+		} else {
+			System.out.print("Enter the weight of new ingredient (in gramms): ");
+			try {
+				weight = scanner.nextDouble();
+			} catch (InputMismatchException e) {
+				System.out.println("Wrong weight!");
+				scanner.next();
+			}
 
-		//return makeWithReflection(ingredientName, weight);
+			Ingredient newIngredient = ingredientDAO.create(recipeId, vegetableId, weight);
+			System.out.println(newIngredient == null
+					? "Ingredient is not created!"
+					: "Ingredient is successfully created: \n\t" + newIngredient.toString());
+		}
 	}
 
 	private void removeIngredient() {
+		showAllRecipes();
+		System.out.print("Enter recipe id: ");
+		int recipeId = scanner.nextInt();
+		showRecipeWithId(recipeId);
+
+		System.out.print("Enter ingredient id: ");
+		int ingredientId = scanner.nextInt();
+		System.out.println(ingredientDAO.remove(ingredientId)
+				? "Ingredient successfully removed from recipe with id="+recipeId
+				: "Ingredient is not removed!");
 	}
+	///</editor-fold>
 
 	private void addNewRecipe() {
 		System.out.print("Enter recipe title: ");
-		String title = scanner.nextLine(); //TODO проверочка на корректность ввода + тут лага с названием с пробелом
+		String title = new Scanner(System.in).nextLine();
 		SaladRecipe newRecipe = saladRecipeDAO.create(title);
 		System.out.println();
 		System.out.println(newRecipe == null
@@ -264,31 +226,11 @@ public class Chef {
 				: "New empty " + newRecipe.toString() + " is successfully created");
 	}
 
-	@Deprecated
-	public Vegetable makeWithReflection(String ingrName, double weight) {
-		// create new vegetable using reflection
-		try {
-			Class [] parameters = {double.class};
-			String ingredientName = "ua.kiev.univ.chef." + ingrName;
-			Class ingredientClass = Class.forName(ingredientName);
-			Constructor constructor =
-					ingredientClass.getDeclaredConstructor(parameters);
-			Vegetable vegetable = (Vegetable) constructor.newInstance(
-					new Object[]{new Double(weight)});
-
-			return vegetable;
-		}
-		catch (Exception e) {
-			System.out.println("No such ingredient!");
-
-			return null;
-		}
-	}
-
 	public void showIngredientsForCalories(Scanner scanner) {
+		//TODO проверить исправить
 		double lowerCalories, upperCalories;
 		
-		System.out.print("Enter the lower limit:");
+		System.out.print("Enter the lower limit: ");
 		try {
 			lowerCalories = scanner.nextDouble();
 		}
@@ -299,7 +241,7 @@ public class Chef {
 			return;
 		}
 		
-		System.out.print("Enter the upper limit:");
+		System.out.print("Enter the upper limit: ");
 		try {
 			upperCalories = scanner.nextDouble();
 		}
@@ -310,8 +252,9 @@ public class Chef {
 			return;
 		}
 
-		System.out.print("Enter recipe id:");
+		System.out.print("Enter recipe id: ");
 		int recipeId = scanner.nextInt();
-		//saladRecipeDAO.showIngredientsByCalories(lowerCalories, upperCalories);
+
+
 	}
 }

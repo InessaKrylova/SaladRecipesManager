@@ -12,7 +12,6 @@ public class IngredientDAO {
 	private static final String EXCEPTION_IN_STATEMENT = "Exception while creating statement";
 	private static final String GET_INGREDIENTS_BY_RECIPE = "SELECT * FROM ingredient WHERE recipe_id=";
 	private static final String GET_INGREDIENT_BY_ID = "SELECT * FROM ingredient where id=";
-	private static final String GET_ALL_INGREDIENTS = "SELECT * FROM ingredient";
 	private static final String CREATE_INGREDIENT = "INSERT INTO ingredient (vegetable_id, recipe_id, weight) VALUES(?, ?, ?) RETURNING id;";
 	private static final String REMOVE_INGREDIENT = "DELETE FROM ingredient WHERE id=";
 	private static final String REMOVE_INGREDIENTS_FROM_RECIPE = "DELETE FROM ingredient WHERE recipe_id=";
@@ -58,25 +57,6 @@ public class IngredientDAO {
         return ingredient;
     }
     
-    public List<Ingredient> getAllIngredients() {
-        List<Ingredient> list = new ArrayList<>();
-        try(Connection connection = DataBaseConnector.getConnection();
-			Statement statement = connection.createStatement();
-			ResultSet resultSet = statement.executeQuery(GET_ALL_INGREDIENTS)) {
-            while(resultSet.next()) {
-            	Vegetable vegetable = new VegetableDAO().getById(resultSet.getInt("vegetable_id"));
-                list.add(new Ingredient(
-            		resultSet.getInt("id"),
-            		vegetable, resultSet.getDouble("weight"),
-            		resultSet.getInt("recipe_id")
-                ));
-            }
-        } catch (SQLException ex) {
-			System.out.println(EXCEPTION_IN_RESULTSET);
-        }
-        return list;
-    }
-    
     public Ingredient create(int recipeId, int vegetableId, double weight) {
 		Ingredient ingredient = null;
     	try (Connection connection = DataBaseConnector.getConnection();
@@ -94,6 +74,7 @@ public class IngredientDAO {
 							weight,
 							recipeId
 	            	);
+
 	            }
 	        } catch (SQLException | NullPointerException ex) {
 				System.out.println(EXCEPTION_IN_RESULTSET);

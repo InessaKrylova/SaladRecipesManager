@@ -1,12 +1,8 @@
-package main.java.recipemanager.vegetabletypes;
+package main.java.recipemanager.entities.vegetabletypes;
 
 import main.java.recipemanager.entities.Vegetable;
 
 public class SpicyVegetable extends Vegetable {
-	
-	public SpicyVegetable(String title, double calories) {
-		super(title, calories);
-	}
 
 	public SpicyVegetable(int id, String title, double calories) {
 		super(id, title, calories);

@@ -23,26 +23,9 @@ public class SaladRecipe extends Entity {
 		super(id);
 		this.title = title;
 		this.ingredients = list;
-	}
-
-    public void addIngredient(Ingredient ingredient) {
-    	this.ingredients.add(ingredient);
-    }
-    
-    public void removeIngredient(int ingredientId) {
-    	 for (int i = 0; i < this.ingredients.size(); i++) {
-             if (this.ingredients.get(i).getId() == ingredientId) {
-            	 this.ingredients.remove(i); break;
-             }
-         }
-    }
-
-	public List<Ingredient> getIngredients() {
-		return ingredients;
-	}
-
-	public void setIngredients(List<Ingredient> ingredients) {
-		this.ingredients = ingredients;
+		for (Ingredient ingredient : list) {
+			this.caloricity += ingredient.getCaloricity();
+		}
 	}
 
 	public String getTitle() {

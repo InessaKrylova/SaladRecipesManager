@@ -12,9 +12,9 @@ public class VegetableDAO {
 	private static final String EXCEPTION_IN_RESULTSET = "Exception while executing query / getting result set";
 	private static final String EXCEPTION_IN_STATEMENT = "Exception while creating statement";
 	private static final String GET_ALL_VEGETABLES = "SELECT * FROM vegetable";
-	private static final String CREATE_VEGETABLE = "INSERT INTO vegetable (title, caloricity, category) VALUES(?, ?, ?) RETURNING id;";
+	private static final String CREATE_VEGETABLE =
+			"INSERT INTO vegetable (title, caloricity, category) VALUES(?, ?, ?) RETURNING id;";
 	private static final String REMOVE_VEGETABLE = "DELETE FROM vegetable WHERE id=";
-	private static final String GET_BY_TITLE = "SELECT * FROM vegetable WHERE title=?;";
 	
 	public Vegetable getById(int id) {
 		Vegetable vegetable = null;
@@ -52,28 +52,6 @@ public class VegetableDAO {
 			System.out.println(EXCEPTION_IN_RESULTSET);
 		}
         return list;
-    }
-
-    public Vegetable getByTitle(String title) {
-		Vegetable vegetable = null;
-        try (Connection connection = DataBaseConnector.getConnection();
-             PreparedStatement statement = connection.prepareStatement(GET_BY_TITLE))  {
-	        statement.setString(1, title);
-        	try (ResultSet resultSet = statement.executeQuery()) {
-	            while(resultSet.next()) {
-					vegetable = new Vegetable(
-							resultSet.getInt("id"),
-							title,
-							resultSet.getInt("caloricity")
-					);
-	            }
-	        } catch (SQLException ex) {
-	            System.out.println(EXCEPTION_IN_RESULTSET);
-	        }
-	    } catch (SQLException ex) {
-	        System.out.println(EXCEPTION_IN_STATEMENT);
-	    }
-        return vegetable;
     }
     
     public Vegetable create(String title, int caloricity, int category) {
