@@ -8,23 +8,22 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import main.java.recipemanager.datasources.DataBaseConnector;
 import main.java.recipemanager.entities.Ingredient;
 import main.java.recipemanager.entities.SaladRecipe;
-import main.java.recipemanager.exceptions.CreatingElementException;
+import main.java.recipemanager.custom_exceptions.CreatingElementException;
 
-public class SaladRecipeDAO {
-	
-	private static final String EXCEPTION_IN_RESULT_SET = "Exception while executing query / getting result set";
-	private static final String EXCEPTION_IN_STATEMENT = "Exception while creating statement";
-
+public class SaladRecipeDAO extends EntityDAO {
 	private static final String CREATE_RECIPE = "INSERT INTO recipe(title) VALUES(?) RETURNING id;";
 	private static final String GET_RECIPE_BY_ID = "SELECT * FROM recipe WHERE id=";
 	private static final String REMOVE_RECIPE = "DELETE FROM recipe WHERE id=";
-	
+
+	public SaladRecipeDAO() {
+		super();
+	}
+
     public SaladRecipe create(String title) throws CreatingElementException {
     	SaladRecipe recipe =  null;
-    	try (Connection connection = DataBaseConnector.getConnection();
+    	try (Connection connection = dataBaseConnector.getConnection();
              PreparedStatement statement = connection.prepareStatement(CREATE_RECIPE)) {
     		statement.setString(1, title);
     		try (ResultSet rs = statement.executeQuery()) {
@@ -42,7 +41,7 @@ public class SaladRecipeDAO {
     }
 	
 	public boolean remove(int id){
-    	try (Connection connection = DataBaseConnector.getConnection();
+    	try (Connection connection = dataBaseConnector.getConnection();
              Statement statement = connection.createStatement()) {
 
 			IngredientDAO ingredientDAO = new IngredientDAO();
@@ -58,7 +57,7 @@ public class SaladRecipeDAO {
     
     public SaladRecipe getById(int id) {
         SaladRecipe recipe = null;
-        try(Connection connection = DataBaseConnector.getConnection();
+        try(Connection connection = dataBaseConnector.getConnection();
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(GET_RECIPE_BY_ID+id)){
             while (resultSet.next()){                    
@@ -73,7 +72,7 @@ public class SaladRecipeDAO {
     
     public List<SaladRecipe> getAllRecipes() {
         List<SaladRecipe> list = new ArrayList<>();
-        try(Connection connection = DataBaseConnector.getConnection();
+        try(Connection connection = dataBaseConnector.getConnection();
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * FROM recipe")){
             while (resultSet.next()){                    

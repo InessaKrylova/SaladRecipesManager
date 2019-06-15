@@ -1,6 +1,6 @@
-package main.java.recipemanager.datasources;
+package main.java.recipemanager.data_source_connectors;
 
-import main.java.recipemanager.exceptions.XMLFileContentException;
+import main.java.recipemanager.custom_exceptions.XMLFileContentException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -15,16 +15,15 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class FileConnector implements DataSource {
+public class XMLFileConnector implements DataSourceConnector {
     private Document document;
     private String path = "src/main/resources/restaurant-settings.xml";
 
     public boolean openConnection() {
         try {
-            File file = new File(path);
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
-            document = db.parse(file);
+            document = db.parse(new File(path));
             document.getDocumentElement().normalize();
             return true;
         } catch (ParserConfigurationException | SAXException | IOException e) {

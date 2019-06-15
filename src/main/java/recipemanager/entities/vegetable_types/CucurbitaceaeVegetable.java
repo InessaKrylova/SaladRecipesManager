@@ -1,4 +1,4 @@
-package main.java.recipemanager.entities.vegetabletypes;
+package main.java.recipemanager.entities.vegetable_types;
 
 import main.java.recipemanager.entities.Vegetable;
 

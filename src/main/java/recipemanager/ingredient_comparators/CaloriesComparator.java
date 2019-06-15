@@ -1,4 +1,4 @@
-package main.java.recipemanager.helpers;
+package main.java.recipemanager.ingredient_comparators;
 
 import main.java.recipemanager.entities.Ingredient;
 

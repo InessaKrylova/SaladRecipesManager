@@ -1,4 +1,4 @@
-package main.java.recipemanager.PL;
+package main.java.recipemanager.presentation_layer;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package main.java.recipemanager.exceptions;
+package main.java.recipemanager.custom_exceptions;
 
 public class WrongElementIdException extends Exception{
     private int id;

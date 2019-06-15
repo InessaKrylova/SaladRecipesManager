@@ -1,22 +1,20 @@
-package main.java.recipemanager.PL;
+package main.java.recipemanager.presentation_layer;
 
 import main.java.recipemanager.DAO.*;
-import main.java.recipemanager.datasources.FileConnector;
+import main.java.recipemanager.data_source_connectors.XMLFileConnector;
 import main.java.recipemanager.entities.Ingredient;
 import main.java.recipemanager.entities.SaladRecipe;
 import main.java.recipemanager.entities.Vegetable;
-import main.java.recipemanager.exceptions.CreatingElementException;
-import main.java.recipemanager.exceptions.WrongElementIdException;
-import main.java.recipemanager.exceptions.XMLFileContentException;
+import main.java.recipemanager.custom_exceptions.CreatingElementException;
+import main.java.recipemanager.custom_exceptions.WrongElementIdException;
+import main.java.recipemanager.custom_exceptions.XMLFileContentException;
 
-import javax.xml.bind.SchemaOutputResolver;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
 public class Chef {
-	///<editor-fold desc="ready">
 	private String staffName;
 	private String staffPosition;
 	private String restaurantTitle;
@@ -37,7 +35,7 @@ public class Chef {
 	}
 
 	private void initializeChef() {
-		FileConnector fileConnector = new FileConnector();
+		XMLFileConnector fileConnector = new XMLFileConnector();
 		if (fileConnector.openConnection()) {
 			try {
 				Map<String, String> data = fileConnector.getFileContent();
@@ -96,7 +94,7 @@ public class Chef {
 					try {
 						showRecipeWithId(recipeId);
 					} catch (WrongElementIdException e){
-						System.out.println(e.getMessage());
+						System.out.println(e.toString());
 					}
 					break;
 
@@ -105,22 +103,26 @@ public class Chef {
 					break;
 
 				case RemoveRecipe:
-					removeRecipe();
+					try {
+						removeRecipe();
+					} catch (WrongElementIdException | InputMismatchException e) {
+						System.out.println(e.toString());
+					}
 					break;
 
 				case AddIngredient:
 					try {
 						addNewIngredient();
 					} catch (WrongElementIdException e){
-						System.out.println(e.getMessage());
+						System.out.println(e.toString());
 					}
 					break;
 
 				case RemoveIngredient:
 					try {
 						removeIngredient();
-					}  catch (WrongElementIdException e){
-						System.out.println(e.getMessage());
+					}  catch (WrongElementIdException | InputMismatchException e){
+						System.out.println(e.toString());
 					}
 					break;
 
@@ -169,9 +171,12 @@ public class Chef {
 		}
 	}
 
-	private void removeRecipe() {
+	private void removeRecipe() throws WrongElementIdException, InputMismatchException {
 		System.out.print("Enter recipe id: ");
 		int recipeId = scanner.nextInt();
+		if (saladRecipeDAO.getById(recipeId) == null) {
+			throw new WrongElementIdException("SaladRecipe", recipeId);
+		}
 		System.out.println(saladRecipeDAO.remove(recipeId)
 				? "SaladRecipe with id="+recipeId+" successfully removed"
 				: "SaladRecipe with id="+recipeId+" is not removed !"
@@ -220,6 +225,7 @@ public class Chef {
 			} catch (InputMismatchException e) {
 				System.out.println("Wrong weight!");
 				scanner.next();
+				return;
 			}
 			try {
 				Ingredient newIngredient = ingredientDAO.create(recipeId, vegetableId, weight);
@@ -242,7 +248,6 @@ public class Chef {
 				? "Ingredient successfully removed from recipe with id="+recipeId
 				: "Ingredient is not removed!");
 	}
-	///</editor-fold>
 
 	private void addNewRecipe() {
 		System.out.print("Enter recipe title: ");
@@ -251,7 +256,7 @@ public class Chef {
 			SaladRecipe newRecipe = saladRecipeDAO.create(title);
 			System.out.println("New empty " + newRecipe.toString() + " is successfully created");
 		} catch (CreatingElementException e) {
-
+			System.out.println(e.toString());
 		}
 	}
 

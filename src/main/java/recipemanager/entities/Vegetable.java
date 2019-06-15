@@ -1,6 +1,6 @@
 package main.java.recipemanager.entities;
 
-import main.java.recipemanager.entities.vegetabletypes.*;
+import main.java.recipemanager.entities.vegetable_types.*;
 
 public class Vegetable extends Entity {
 	private String title;

@@ -1,6 +1,6 @@
-package main.java.recipemanager.datasources;
+package main.java.recipemanager.data_source_connectors;
 
-public interface DataSource {
+public interface DataSourceConnector {
     /**
      * Implemented methods should return true, if connection was opened successfully.
      * @return boolean

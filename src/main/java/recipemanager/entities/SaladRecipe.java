@@ -1,7 +1,7 @@
 package main.java.recipemanager.entities;
 
-import main.java.recipemanager.helpers.CaloriesComparator;
-import main.java.recipemanager.helpers.WeightComparator;
+import main.java.recipemanager.ingredient_comparators.CaloriesComparator;
+import main.java.recipemanager.ingredient_comparators.WeightComparator;
 
 import java.util.ArrayList;
 import java.util.Collections;
