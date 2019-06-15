@@ -79,7 +79,6 @@ public class IngredientDAO {
     
     public Ingredient create(int recipeId, int vegetableId, double weight) {
 		Ingredient ingredient = null;
-		System.out.println(CREATE_INGREDIENT);
     	try (Connection connection = DataBaseConnector.getConnection();
 			 PreparedStatement statement = connection.prepareStatement(CREATE_INGREDIENT)) {
 	        statement.setInt(1, vegetableId);

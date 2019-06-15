@@ -1,5 +1,7 @@
 package main.java.recipemanager.entities;
 
+import java.util.List;
+
 public class Ingredient extends Entity {
    	private Vegetable vegetable;
    	private int recipeId;
@@ -30,25 +32,23 @@ public class Ingredient extends Entity {
 		return weight;
 	}
 
-	public void setWeight(double weight) {
-		this.weight = weight;
-	}
-
 	public int getRecipeId() {
 		return recipeId;
 	}
 
-	public void setRecipeId(int recipeId) {
-		this.recipeId = recipeId;
-	}
-
 	@Override
 	public String toString() {
-		return "Ingredient { " +
-				"vegetableId=" + vegetable.getId() +
-				", recipeId=" + recipeId +
-				", caloricity=" + caloricity +
-				", weight=" + weight +
-				" }";
+		 StringBuilder stringBuilder = new StringBuilder("");
+		 stringBuilder.append("Ingredient { ")
+					   .append("vegetableId=")
+				       .append(vegetable.getId())
+				       .append(", recipeId=")
+				 	   .append(recipeId)
+					   .append(", caloricity=")
+				 	   .append(caloricity)
+					   .append(", weight=")
+				 	   .append(weight)
+				 	   .append(" }");
+		 return stringBuilder.toString();
 	}
 }

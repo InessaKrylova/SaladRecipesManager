@@ -86,12 +86,35 @@ public class SaladRecipe extends Entity {
 
 	@Override
 	public String toString() {
-		System.out.println(ingredients.size());
-		return "SaladRecipe { " +
-				"id=" + super.getId() +
-				", ingredients=" + ingredients.toString() +
-				", title='" + title + '\'' +
-				", caloricity=" + caloricity +
-				" }";
+		 StringBuilder stringBuilder = new StringBuilder("");
+    	 stringBuilder.append("SaladRecipe { ")
+				 .append("\n\tid = ")
+				 .append(super.getId())
+				 .append(",")
+				 .append("\n\tingredients = List{")
+				 .append(ingredientsToString())
+				 .append("},")
+				 .append("\n\ttitle = \'")
+				 .append(title)
+				 .append("\',")
+				 .append("\n\tcaloricity = ")
+				 .append(caloricity)
+				 .append("\n}");
+    	 return stringBuilder.toString();
 	}
+
+	public String ingredientsToString() {
+		StringBuilder stringBuilder = new StringBuilder("");
+		if (!ingredients.isEmpty()) {
+			stringBuilder.append("\n");
+			for (Ingredient ingredient : ingredients) {
+				stringBuilder.append("\t\t")
+						.append(ingredient.toString())
+						.append("\n");
+			}
+			stringBuilder.append("\t");
+		}
+		return stringBuilder.toString();
+	}
+
 }

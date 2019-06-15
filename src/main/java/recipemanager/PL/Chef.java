@@ -165,31 +165,55 @@ public class Chef {
 				: "SaladRecipe with id="+recipeId+" is not removed !"
 		);
 	}
-	///</editor-fold>
 
 	private void sortIngredientsByWeight() {
-		//TODO
 		System.out.print("Enter recipe id: ");
 		int recipeId = scanner.nextInt();
 		SaladRecipe salad = saladRecipeDAO.getById(recipeId);
 		salad.sortIngredientsByWeight();
 		System.out.println("Ingredients in recipe with id=" + recipeId + " successfully sorted by weight:");
-		System.out.println(salad.toString());
+		System.out.println(salad.ingredientsToString());
 	}
 
 	private void sortIngredientsByCalories() {
-		//TODO
 		System.out.print("Enter recipe id: ");
 		int recipeId = scanner.nextInt();
 		SaladRecipe salad = saladRecipeDAO.getById(recipeId);
 		salad.sortIngredientsByCalories();
 		System.out.println("Ingredients in recipe with id=" + recipeId + " successfully sorted by calories:");
-		System.out.println(salad.toString());
+		System.out.println(salad.ingredientsToString());
 	}
 
 	private void manageIngredient() {
+		choice = -1;
+		System.out.println("\nChoose one of the options:");
+		System.out.println("\t1. Add new ingredient to existing recipe");
+		System.out.println("\t2. Remove ingredient from existing recipe");
+		System.out.println("\t0. Back to all options");
+
+		getUserChoice();
+
+		switch (choice) {
+			case 1:
+				addNewIngredient();
+				break;
+			case 2:
+				removeIngredient();
+				break;
+			case 0:
+				showOptions();
+				break;
+			default:
+				break;
+		}
+	}
+	///</editor-fold>
+
+	private void addNewIngredient() {
+		
 		System.out.print("Enter recipe id:");
 		int recipeId = scanner.nextInt();
+
 		System.out.print("Enter ingredient id:");
 		int ingredientId = scanner.nextInt();
 		//TODO
@@ -225,7 +249,9 @@ public class Chef {
 		}
 
 		//return makeWithReflection(ingredientName, weight);
+	}
 
+	private void removeIngredient() {
 	}
 
 	private void addNewRecipe() {
