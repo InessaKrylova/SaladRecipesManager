@@ -3,19 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="d3f12022-a972-4a0f-a4e1-9c3109d790fd" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SaladRecipesManager/main/java/recipemanager/PL/Chef.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SaladRecipesManager/main/java/recipemanager/PL/Chef.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/recipemanager/DAO/IngredientDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/recipemanager/DAO/IngredientDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/recipemanager/DAO/SaladRecipeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/recipemanager/DAO/SaladRecipeDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/recipemanager/DAO/VegetableDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/recipemanager/DAO/VegetableDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/recipemanager/PL/Chef.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/recipemanager/PL/Chef.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/recipemanager/PL/Options.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/recipemanager/PL/Options.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/recipemanager/entities/Ingredient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/recipemanager/entities/Ingredient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/recipemanager/datasources/FileConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/recipemanager/datasources/FileConnector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/recipemanager/entities/SaladRecipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/recipemanager/entities/SaladRecipe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/recipemanager/entities/Vegetable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/recipemanager/entities/Vegetable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/recipemanager/vegetabletypes/CabbageVegetable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/recipemanager/entities/vegetabletypes/CabbageVegetable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/recipemanager/vegetabletypes/CucurbitaceaeVegetable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/recipemanager/entities/vegetabletypes/CucurbitaceaeVegetable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/recipemanager/vegetabletypes/NightshadeVegetable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/recipemanager/entities/vegetabletypes/NightshadeVegetable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/recipemanager/vegetabletypes/RootVegetable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/recipemanager/entities/vegetabletypes/RootVegetable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/recipemanager/vegetabletypes/SpicyVegetable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/recipemanager/entities/vegetabletypes/SpicyVegetable.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,66 +25,14 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/recipemanager/PL/Chef.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="69" column="29" selection-start-line="69" selection-start-column="29" selection-end-line="69" selection-end-column="29" />
+            <state relative-caret-position="256">
+              <caret line="52" column="45" selection-start-line="52" selection-start-column="45" selection-end-line="52" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#Chef#0;class#Chef#0" />
-                <element signature="method#initializeChef#0;class#Chef#0" />
-                <element signature="method#showRecipeWithId#0;class#Chef#0" />
                 <element signature="method#removeRecipe#0;class#Chef#0" />
                 <element signature="method#sortIngredientsByWeight#0;class#Chef#0" />
                 <element signature="method#sortIngredientsByCalories#0;class#Chef#0" />
-                <element signature="method#removeIngredient#0;class#Chef#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/recipemanager/entities/Ingredient.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="34" column="29" lean-forward="true" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/recipemanager/entities/Entity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="5" column="11" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/recipemanager/DAO/IngredientDAO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="13" column="92" selection-start-line="13" selection-start-column="92" selection-end-line="13" selection-end-column="92" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#getIngredientsByRecipeId#0;class#IngredientDAO#0" />
-                <element signature="method#getById#0;class#IngredientDAO#0" />
-                <element signature="method#remove#0;class#IngredientDAO#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/recipemanager/entities/SaladRecipe.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="27" column="9" lean-forward="true" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#783#784#0" expanded="true" />
-                <element signature="e#847#848#0" expanded="true" />
-                <element signature="e#1106#1107#0" expanded="true" />
-                <element signature="e#1208#1209#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -103,8 +44,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -115,6 +56,10 @@
       <find>scanner.next(</find>
       <find>bACK</find>
       <find>enter</find>
+      <find>is</find>
+      <find>foun</find>
+      <find>found</find>
+      <find>created</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -139,13 +84,10 @@
         <option value="$PROJECT_DIR$/src/main/java/recipemanager/PL/Option.java" />
         <option value="$PROJECT_DIR$/src/main/resources/chef-settings.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/restaurant-settings.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/recipemanager/datasources/FileConnector.java" />
         <option value="$PROJECT_DIR$/src/main/java/recipemanager/PL/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/recipemanager/datasources/DataSource.java" />
         <option value="$PROJECT_DIR$/src/main/java/recipemanager/datasources/DataBaseConnector.java" />
         <option value="$PROJECT_DIR$/src/main/resources/config.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/recipemanager/DAO/SaladRecipeDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/recipemanager/DAO/VegetableDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/recipemanager/entities/vegetabletypes/NightshadeVegetable.java" />
         <option value="$PROJECT_DIR$/src/main/java/recipemanager/entities/vegetabletypes/RootVegetable.java" />
         <option value="$PROJECT_DIR$/src/main/java/recipemanager/entities/vegetabletypes/SpicyVegetable.java" />
@@ -154,8 +96,14 @@
         <option value="$PROJECT_DIR$/src/main/java/recipemanager/entities/Vegetable.java" />
         <option value="$PROJECT_DIR$/src/main/java/recipemanager/PL/Options.java" />
         <option value="$PROJECT_DIR$/src/main/java/recipemanager/entities/Ingredient.java" />
-        <option value="$PROJECT_DIR$/src/main/java/recipemanager/DAO/IngredientDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/recipemanager/entities/SaladRecipe.java" />
+        <option value="$PROJECT_DIR$/src/main/java/recipemanager/exceptions/WrongElementIdException.java" />
+        <option value="$PROJECT_DIR$/src/main/java/recipemanager/exceptions/CreatingElementException.java" />
+        <option value="$PROJECT_DIR$/src/main/java/recipemanager/exceptions/XMLFileContentException.java" />
+        <option value="$PROJECT_DIR$/src/main/java/recipemanager/datasources/FileConnector.java" />
+        <option value="$PROJECT_DIR$/src/main/java/recipemanager/DAO/IngredientDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/recipemanager/DAO/SaladRecipeDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/recipemanager/DAO/VegetableDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/recipemanager/PL/Chef.java" />
       </list>
     </option>
@@ -173,35 +121,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="SaladRecipesManager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SaladRecipesManager" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SaladRecipesManager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SaladRecipesManager" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SaladRecipesManager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SaladRecipesManager" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SaladRecipesManager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SaladRecipesManager" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="recipemanager" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="PackagesPane">
         <subPane>
           <expand>
@@ -254,6 +173,13 @@
               <item name="SaladRecipesManager" type="616d4139:PackageViewModuleNode" />
               <item name="main" type="1f31426a:PackageElementNode" />
               <item name="java.recipemanager" type="1f31426a:PackageElementNode" />
+              <item name="exceptions" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="SaladRecipesManager" type="58d84e3e:PackageViewProjectNode" />
+              <item name="SaladRecipesManager" type="616d4139:PackageViewModuleNode" />
+              <item name="main" type="1f31426a:PackageElementNode" />
+              <item name="java.recipemanager" type="1f31426a:PackageElementNode" />
               <item name="PL" type="1f31426a:PackageElementNode" />
             </path>
             <path>
@@ -261,6 +187,35 @@
               <item name="SaladRecipesManager" type="616d4139:PackageViewModuleNode" />
               <item name="main" type="1f31426a:PackageElementNode" />
               <item name="resources" type="1f31426a:PackageElementNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="SaladRecipesManager" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SaladRecipesManager" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SaladRecipesManager" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SaladRecipesManager" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SaladRecipesManager" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SaladRecipesManager" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SaladRecipesManager" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SaladRecipesManager" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="recipemanager" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -274,9 +229,6 @@
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\froy\IdeaProjects\SaladRecipesManager\src\main\resources" />
-    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="main.java.recipemanager.entities" />
       <recent name="main.java.recipemanager.DAO" />
@@ -284,6 +236,12 @@
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\froy\IdeaProjects\SaladRecipesManager\src\main" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="main.java.recipemanager.exceptions" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\froy\IdeaProjects\SaladRecipesManager\src\main\resources" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -340,9 +298,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19894099" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20196672" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -352,11 +309,11 @@
       <window_info anchor="bottom" id="Messages" order="0" weight="0.3267974" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.32827735" />
-      <window_info active="true" anchor="bottom" id="Run" order="3" sideWeight="0.49924356" visible="true" weight="0.04901961" />
+      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.49924356" visible="true" weight="0.24019608" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="7" />
+      <window_info anchor="bottom" id="TODO" order="7" weight="0.32843137" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50075644" side_tool="true" weight="0.64705884" />
       <window_info anchor="bottom" id="Version Control" order="10" sideWeight="0.49848714" weight="0.12418301" />
@@ -369,6 +326,34 @@
       <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
     </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20196672" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="0" weight="0.3267974" />
+      <window_info anchor="bottom" id="Message" order="1" />
+      <window_info anchor="bottom" id="Find" order="2" weight="0.32827735" />
+      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.49924356" visible="true" weight="0.08169935" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="7" weight="0.32843137" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50075644" side_tool="true" weight="0.64705884" />
+      <window_info anchor="bottom" id="Version Control" order="10" sideWeight="0.49848714" weight="0.12418301" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Maven" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+    </layout-to-restore>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Main.java" />
@@ -380,16 +365,6 @@
       </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_60/src.zip!/java/sql/Connection.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/recipemanager/datasources/FileConnector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
-          <caret line="21" column="22" lean-forward="true" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/restaurant-settings.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
@@ -490,16 +465,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/recipemanager/DAO/VegetableDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/recipemanager/PL/Options.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
@@ -510,6 +475,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/recipemanager/entities/Ingredient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="34" column="29" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/recipemanager/entities/Entity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -517,30 +489,82 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/recipemanager/entities/Ingredient.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/recipemanager/entities/SaladRecipe.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="34" column="29" lean-forward="true" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="29" />
+        <state relative-caret-position="972">
+          <caret line="54" column="34" selection-start-line="54" selection-start-column="34" selection-end-line="54" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#764#765#0" expanded="true" />
+            <element signature="e#783#784#0" expanded="true" />
+            <element signature="e#822#823#0" expanded="true" />
+            <element signature="e#847#848#0" expanded="true" />
+            <element signature="e#1041#1042#0" expanded="true" />
+            <element signature="e#1106#1107#0" expanded="true" />
+            <element signature="e#1148#1149#0" expanded="true" />
+            <element signature="e#1208#1209#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/recipemanager/exceptions/WrongElementIdException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="5" lean-forward="true" selection-start-line="3" selection-start-column="3" selection-end-line="12" selection-end-column="5" />
+          <folding>
+            <element signature="e#143#144#0" expanded="true" />
+            <element signature="e#168#169#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/recipemanager/exceptions/XMLFileContentException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="21" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
+          <folding>
+            <element signature="e#151#152#0" expanded="true" />
+            <element signature="e#226#227#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/recipemanager/exceptions/CreatingElementException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="3" column="11" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="11" />
+          <folding>
+            <element signature="e#154#155#0" expanded="true" />
+            <element signature="e#232#233#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/recipemanager/DAO/SaladRecipeDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="455">
-          <caret line="82" column="35" lean-forward="true" selection-start-line="82" selection-start-column="35" selection-end-line="82" selection-end-column="35" />
+        <state relative-caret-position="269">
+          <caret line="39" column="40" selection-start-line="39" selection-start-column="40" selection-end-line="39" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#create#0;class#SaladRecipeDAO#0" />
             <element signature="method#remove#0;class#SaladRecipeDAO#0" />
-            <element signature="method#getById#0;class#SaladRecipeDAO#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/recipemanager/DAO/VegetableDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="69" column="46" lean-forward="true" selection-start-line="69" selection-start-column="46" selection-end-line="69" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/recipemanager/DAO/IngredientDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="13" column="92" selection-start-line="13" selection-start-column="92" selection-end-line="13" selection-end-column="92" />
+        <state relative-caret-position="217">
+          <caret line="85" column="42" selection-start-line="85" selection-start-column="42" selection-end-line="85" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#getIngredientsByRecipeId#0;class#IngredientDAO#0" />
@@ -550,33 +574,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/recipemanager/entities/SaladRecipe.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/recipemanager/datasources/FileConnector.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="27" column="9" lean-forward="true" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
+        <state relative-caret-position="234">
+          <caret line="19" column="34" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#783#784#0" expanded="true" />
-            <element signature="e#847#848#0" expanded="true" />
-            <element signature="e#1106#1107#0" expanded="true" />
-            <element signature="e#1208#1209#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/recipemanager/PL/Chef.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="69" column="29" selection-start-line="69" selection-start-column="29" selection-end-line="69" selection-end-column="29" />
+        <state relative-caret-position="256">
+          <caret line="52" column="45" selection-start-line="52" selection-start-column="45" selection-end-line="52" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#Chef#0;class#Chef#0" />
-            <element signature="method#initializeChef#0;class#Chef#0" />
-            <element signature="method#showRecipeWithId#0;class#Chef#0" />
             <element signature="method#removeRecipe#0;class#Chef#0" />
             <element signature="method#sortIngredientsByWeight#0;class#Chef#0" />
             <element signature="method#sortIngredientsByCalories#0;class#Chef#0" />
-            <element signature="method#removeIngredient#0;class#Chef#0" />
           </folding>
         </state>
       </provider>

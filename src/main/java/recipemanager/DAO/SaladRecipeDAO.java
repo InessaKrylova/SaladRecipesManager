@@ -11,6 +11,7 @@ import java.util.List;
 import main.java.recipemanager.datasources.DataBaseConnector;
 import main.java.recipemanager.entities.Ingredient;
 import main.java.recipemanager.entities.SaladRecipe;
+import main.java.recipemanager.exceptions.CreatingElementException;
 
 public class SaladRecipeDAO {
 	
@@ -21,7 +22,7 @@ public class SaladRecipeDAO {
 	private static final String GET_RECIPE_BY_ID = "SELECT * FROM recipe WHERE id=";
 	private static final String REMOVE_RECIPE = "DELETE FROM recipe WHERE id=";
 	
-    public SaladRecipe create(String title) {
+    public SaladRecipe create(String title) throws CreatingElementException {
     	SaladRecipe recipe =  null;
     	try (Connection connection = DataBaseConnector.getConnection();
              PreparedStatement statement = connection.prepareStatement(CREATE_RECIPE)) {
@@ -36,6 +37,7 @@ public class SaladRecipeDAO {
 	    } catch (SQLException ex) {
 			System.out.println(EXCEPTION_IN_STATEMENT);
 		}
+    	if (recipe == null) throw new CreatingElementException("SaladRecipe");
     	return recipe;
     }
 	

@@ -2,6 +2,7 @@ package main.java.recipemanager.DAO;
 import main.java.recipemanager.datasources.DataBaseConnector;
 import main.java.recipemanager.entities.Ingredient;
 import main.java.recipemanager.entities.Vegetable;
+import main.java.recipemanager.exceptions.CreatingElementException;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -57,7 +58,7 @@ public class IngredientDAO {
         return ingredient;
     }
     
-    public Ingredient create(int recipeId, int vegetableId, double weight) {
+    public Ingredient create(int recipeId, int vegetableId, double weight) throws CreatingElementException {
 		Ingredient ingredient = null;
     	try (Connection connection = DataBaseConnector.getConnection();
 			 PreparedStatement statement = connection.prepareStatement(CREATE_INGREDIENT)) {
@@ -82,6 +83,7 @@ public class IngredientDAO {
 	    } catch (SQLException ex) {
 			System.out.println(EXCEPTION_IN_STATEMENT);
 		}
+    	if (ingredient == null) throw new CreatingElementException("Ingredient");
         return ingredient;
     }
     

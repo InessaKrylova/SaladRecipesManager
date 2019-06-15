@@ -36,14 +36,7 @@ public class SaladRecipe extends Entity {
 		this.title = title;
 	}
 
-	public int getCaloricity() {
-		for (Ingredient ingredient : ingredients) {
-			caloricity += ingredient.getCaloricity();
-		}
-		return caloricity;
-	}
-
-	public void sortIngredientsByCalories() {
+	public void sortIngredientsByCaloricity() {
     	Collections.sort(ingredients, new CaloriesComparator());
 	}
 
@@ -51,18 +44,18 @@ public class SaladRecipe extends Entity {
 		Collections.sort(ingredients, new WeightComparator());
 	}
 
-	public void showIngredientsByCalories(double lowerCalories,
-										  double upperCalories) {
-		System.out.println("Ingredients for calories ["
-				+ lowerCalories + ", " + upperCalories + "]");
+	public void findIngredientsByCaloriesInterval(double lowerCalories,
+                                                  double upperCalories) {
+		System.out.println("Ingredients for calories with interval ["
+				+ lowerCalories + "<...<" + upperCalories + "]:");
 		for (Ingredient ingredient : ingredients) {
 			double calories = ingredient.getCaloricity();
 			if (calories >= lowerCalories && calories <= upperCalories) {
 				Vegetable vegetable = ingredient.getVegetable();
 				System.out.println(
-						vegetable.getTitle() + ", "
-						+ vegetable.getCaloricityPer100g() + "kcal per 100g, "
-						+ ingredient.getCaloricity() + "kcal in this recipe");
+						"\t" + vegetable.getTitle() + ": "
+						+ vegetable.getCaloricityPer100g() + " kcal per 100g, "
+						+ ingredient.getCaloricity() + " kcal in this recipe");
 			}
 		}
 	}

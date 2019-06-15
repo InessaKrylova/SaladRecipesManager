@@ -5,6 +5,7 @@ import java.util.*;
 
 import main.java.recipemanager.datasources.DataBaseConnector;
 import main.java.recipemanager.entities.Vegetable;
+import main.java.recipemanager.exceptions.CreatingElementException;
 
 public class VegetableDAO {
    
@@ -54,7 +55,7 @@ public class VegetableDAO {
         return list;
     }
     
-    public Vegetable create(String title, int caloricity, int category) {
+    public Vegetable create(String title, int caloricity, int category) throws CreatingElementException {
 		Vegetable vegetable = null;
 		try (Connection connection = DataBaseConnector.getConnection();
              PreparedStatement statement = connection.prepareStatement(CREATE_VEGETABLE)) {
@@ -71,6 +72,7 @@ public class VegetableDAO {
 		} catch (SQLException ex) {
 			System.out.println(EXCEPTION_IN_STATEMENT);
 		}
+		if (vegetable == null) throw new CreatingElementException("Vegetable");
 		return vegetable;
     }     
     
