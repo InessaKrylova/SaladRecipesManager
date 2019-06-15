@@ -21,20 +21,17 @@ public class VegetableDAO {
         try (Connection connection = DataBaseConnector.getConnection();
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(GET_VEGETABLE_BY_ID +id)) {
-            while(resultSet.next()) {
+             while(resultSet.next()) {
 				vegetable = Vegetable.getVegetableWithCategory(
 						resultSet.getInt("category"),
 						id,
 						resultSet.getString("title"),
 						resultSet.getInt("caloricity")
 				);
-            }
-        } catch (Exception ex) {
-            System.out.println(EXCEPTION_IN_RESULTSET);
-        }
-		System.out.println(vegetable == null
-				? "Vegetable is not found"
-				: vegetable.toString());
+             }
+        } catch (SQLException ex) {
+			System.out.println(EXCEPTION_IN_RESULTSET);
+		}
         return vegetable;
     }
 
@@ -51,12 +48,8 @@ public class VegetableDAO {
                 		resultSet.getInt("caloricity")
                 ));               
             }
-        } catch (Exception ex) {
-            System.out.println(EXCEPTION_IN_RESULTSET);
-        }
-    	System.out.println("All vegetables:");
-    	for (Vegetable vegetable : list) {
-			System.out.println("\t"+vegetable.toString());
+        } catch (SQLException ex) {
+			System.out.println(EXCEPTION_IN_RESULTSET);
 		}
         return list;
     }
@@ -77,12 +70,9 @@ public class VegetableDAO {
 	        } catch (SQLException ex) {
 	            System.out.println(EXCEPTION_IN_RESULTSET);
 	        }
-	    } catch (Exception ex) {
+	    } catch (SQLException ex) {
 	        System.out.println(EXCEPTION_IN_STATEMENT);
 	    }
-		System.out.println(vegetable == null
-				? "Vegetable is not found"
-				: vegetable.toString());
         return vegetable;
     }
     
@@ -100,22 +90,20 @@ public class VegetableDAO {
 			} catch (SQLException ex) {
 				System.out.println(EXCEPTION_IN_RESULTSET);
 			}
-		} catch (Exception ex) {
+		} catch (SQLException ex) {
 			System.out.println(EXCEPTION_IN_STATEMENT);
 		}
-		System.out.println(vegetable == null
-				? "Vegetable is not created"
-				: vegetable.toString());
 		return vegetable;
     }     
     
-    public void remove(int id){
+    public boolean remove(int id){
     	try (Connection connection = DataBaseConnector.getConnection();
              Statement statement = connection.createStatement()) {
     		statement.execute(REMOVE_VEGETABLE +id);
-	    	System.out.println("Vegetable with id="+id+" successfully removed");
+    		return true;
         } catch (Exception ex) {
             System.out.println(EXCEPTION_IN_STATEMENT);
+            return false;
         }
     }
 }

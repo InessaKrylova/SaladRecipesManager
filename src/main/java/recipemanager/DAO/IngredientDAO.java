@@ -22,8 +22,9 @@ public class IngredientDAO {
         try (Connection connection = DataBaseConnector.getConnection();
 			 Statement statement = connection.createStatement();
 			 ResultSet resultSet = statement.executeQuery(GET_INGREDIENTS_BY_RECIPE +recipeId)) {
-             while(resultSet.next()) {
-				 Vegetable vegetable = new VegetableDAO().getById(resultSet.getInt("vegetable"));
+
+        	 while(resultSet.next()) {
+				 Vegetable vegetable = new VegetableDAO().getById(resultSet.getInt("vegetable_id"));
             	 list.add(new Ingredient(
                 		resultSet.getInt("id"),
                 		vegetable,
@@ -31,12 +32,8 @@ public class IngredientDAO {
 						recipeId
                  ));
              }
-        } catch (Exception ex) {
-        	System.out.println(EXCEPTION_IN_RESULTSET);
-        }
-        
-        for (Ingredient ingredient : list) {
-			System.out.println(ingredient.toString());
+        } catch (SQLException ex) {
+			System.out.println(EXCEPTION_IN_RESULTSET);
 		}
         return list;
     }
@@ -55,12 +52,9 @@ public class IngredientDAO {
             			resultSet.getInt("recipe_id")
                 );
             }
-        } catch (Exception ex) {
+        } catch (SQLException ex) {
         	System.out.println(EXCEPTION_IN_RESULTSET);
         }
-		System.out.println(ingredient == null
-			? "Ingredient is not found"
-			: ingredient.toString());
         return ingredient;
     }
     
@@ -77,13 +71,9 @@ public class IngredientDAO {
             		resultSet.getInt("recipe_id")
                 ));
             }
-        } catch (Exception ex) {
+        } catch (SQLException ex) {
 			System.out.println(EXCEPTION_IN_RESULTSET);
         }
-        System.out.println("All ingredients:");
-        for (Ingredient ingredient : list) {
-			System.out.println(ingredient.toString());
-		}
         return list;
     }
     
@@ -107,34 +97,33 @@ public class IngredientDAO {
 	            	);
 	            }
 	        } catch (SQLException | NullPointerException ex) {
-	        	System.out.println(EXCEPTION_IN_RESULTSET);
-	        }
-	    } catch (Exception ex) {
-	    	System.out.println(EXCEPTION_IN_STATEMENT);
-	    }
-		System.out.println(ingredient == null
-				? "Ingredient is not created"
-				: ingredient.toString());
+				System.out.println(EXCEPTION_IN_RESULTSET);
+			}
+	    } catch (SQLException ex) {
+			System.out.println(EXCEPTION_IN_STATEMENT);
+		}
         return ingredient;
     }
     
-	public void remove(int id){
+	public boolean remove(int id){
     	try (Connection connection = DataBaseConnector.getConnection();
 			 Statement statement = connection.createStatement()) {
 	    	statement.execute(REMOVE_INGREDIENT +id);
-	    	System.out.println("Ingredient with id="+id+" successfully removed");
-        } catch (Exception ex) {
+	    	return true;
+        } catch (SQLException ex) {
             System.out.println(EXCEPTION_IN_STATEMENT);
+            return false;
         }
     }
 
-	public void removeIngredientsWithRecipeId(int recipeId){
+	public boolean removeIngredientsWithRecipeId(int recipeId){
 		try (Connection connection = DataBaseConnector.getConnection();
 			 Statement statement = connection.createStatement()) {
 			statement.execute(REMOVE_INGREDIENTS_FROM_RECIPE +recipeId);
-			System.out.println("Ingredients successfully removed from recipe with id="+recipeId);
-		} catch (Exception ex) {
+			return true;
+		} catch (SQLException ex) {
 			System.out.println(EXCEPTION_IN_STATEMENT);
+			return false;
 		}
 	}
 }

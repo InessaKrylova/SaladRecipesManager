@@ -9,12 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import main.java.recipemanager.datasources.DataBaseConnector;
+import main.java.recipemanager.entities.Ingredient;
 import main.java.recipemanager.entities.SaladRecipe;
 
 public class SaladRecipeDAO {
 	
 	private static final String EXCEPTION_IN_RESULT_SET = "Exception while executing query / getting result set";
 	private static final String EXCEPTION_IN_STATEMENT = "Exception while creating statement";
+
 	private static final String CREATE_RECIPE = "INSERT INTO recipe(title) VALUES(?) RETURNING id;";
 	private static final String GET_RECIPE_BY_ID = "SELECT * FROM recipe WHERE id=";
 	private static final String REMOVE_RECIPE = "DELETE FROM recipe WHERE id=";
@@ -29,11 +31,11 @@ public class SaladRecipeDAO {
 	            	 recipe = new SaladRecipe(rs.getInt("id"), title);
 	            }
 	    	} catch (SQLException | NullPointerException ex) {
-	        	System.out.println(EXCEPTION_IN_RESULT_SET);
-	        }
-	    } catch (Exception ex) {
-	    	System.out.println(EXCEPTION_IN_STATEMENT);
-	    }
+				System.out.println(EXCEPTION_IN_RESULT_SET);
+			}
+	    } catch (SQLException ex) {
+			System.out.println(EXCEPTION_IN_STATEMENT);
+		}
     	return recipe;
     }
 	
@@ -46,10 +48,10 @@ public class SaladRecipeDAO {
 
 			statement.execute(REMOVE_RECIPE+id);
 			return true;
-        } catch (Exception ex) {
-            System.out.println(EXCEPTION_IN_STATEMENT);
-            return false;
-        }
+        } catch (SQLException ex) {
+			System.out.println(EXCEPTION_IN_STATEMENT);
+			return false;
+		}
     }               
     
     public SaladRecipe getById(int id) {
@@ -58,10 +60,10 @@ public class SaladRecipeDAO {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(GET_RECIPE_BY_ID+id)){
             while (resultSet.next()){                    
-            	recipe = new SaladRecipe(id, resultSet.getString("title"));
-            	//TODO ингредиенты не извлекаются
+            	List<Ingredient> ingredientList = new IngredientDAO().getIngredientsByRecipeId(id);
+				recipe = new SaladRecipe(id, resultSet.getString("title"), ingredientList);
             }
-        } catch (Exception ex) {
+        } catch (SQLException | NullPointerException e) {
         	System.out.println(EXCEPTION_IN_RESULT_SET);
         }
         return recipe;
@@ -78,7 +80,7 @@ public class SaladRecipeDAO {
                     resultSet.getString("title")
             	)); 	            	
             }
-		} catch (Exception ex) {
+		} catch (SQLException ex) {
 			System.out.println(EXCEPTION_IN_RESULT_SET);
 		}
         return list;

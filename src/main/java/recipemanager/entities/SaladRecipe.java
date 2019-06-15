@@ -19,10 +19,11 @@ public class SaladRecipe extends Entity {
 		this.ingredients = new ArrayList<>();
 	}
 
-    public SaladRecipe() {
-    	super();
-		this.ingredients = new ArrayList<>();
-    }
+	public SaladRecipe(int id, String title, List<Ingredient> list) {
+		super(id);
+		this.title = title;
+		this.ingredients = list;
+	}
 
     public void addIngredient(Ingredient ingredient) {
     	this.ingredients.add(ingredient);
@@ -60,7 +61,7 @@ public class SaladRecipe extends Entity {
 	}
 
 	public void sortIngredientsByCalories() {
-		Collections.sort(ingredients, new CaloriesComparator());
+    	Collections.sort(ingredients, new CaloriesComparator());
 	}
 
 	public void sortIngredientsByWeight() {
@@ -85,9 +86,10 @@ public class SaladRecipe extends Entity {
 
 	@Override
 	public String toString() {
+		System.out.println(ingredients.size());
 		return "SaladRecipe { " +
 				"id=" + super.getId() +
-				", ingredients=" + ingredients +
+				", ingredients=" + ingredients.toString() +
 				", title='" + title + '\'' +
 				", caloricity=" + caloricity +
 				" }";

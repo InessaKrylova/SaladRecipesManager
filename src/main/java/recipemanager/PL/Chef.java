@@ -2,6 +2,7 @@ package main.java.recipemanager.PL;
 
 import main.java.recipemanager.DAO.*;
 import main.java.recipemanager.datasources.FileConnector;
+import main.java.recipemanager.entities.Ingredient;
 import main.java.recipemanager.entities.SaladRecipe;
 import main.java.recipemanager.entities.Vegetable;
 
@@ -124,7 +125,7 @@ public class Chef {
 	}
 
 	private void showRecipeWithId() {
-		System.out.print("Enter recipe id:");
+		System.out.print("Enter recipe id: ");
 		int recipeId = scanner.nextInt();
 		SaladRecipe recipe = saladRecipeDAO.getById(recipeId);
 		System.out.println(recipe == null
@@ -168,14 +169,22 @@ public class Chef {
 
 	private void sortIngredientsByWeight() {
 		//TODO
-		System.out.print("Enter recipe id:");
+		System.out.print("Enter recipe id: ");
 		int recipeId = scanner.nextInt();
+		SaladRecipe salad = saladRecipeDAO.getById(recipeId);
+		salad.sortIngredientsByWeight();
+		System.out.println("Ingredients in recipe with id=" + recipeId + " successfully sorted by weight:");
+		System.out.println(salad.toString());
 	}
 
 	private void sortIngredientsByCalories() {
 		//TODO
-		System.out.print("Enter recipe id:");
+		System.out.print("Enter recipe id: ");
 		int recipeId = scanner.nextInt();
+		SaladRecipe salad = saladRecipeDAO.getById(recipeId);
+		salad.sortIngredientsByCalories();
+		System.out.println("Ingredients in recipe with id=" + recipeId + " successfully sorted by calories:");
+		System.out.println(salad.toString());
 	}
 
 	private void manageIngredient() {
@@ -184,7 +193,19 @@ public class Chef {
 		System.out.print("Enter ingredient id:");
 		int ingredientId = scanner.nextInt();
 		//TODO
+		//System.out.println(vegetable == null
+		//		? "Vegetable is not found"
+		//		: vegetable.toString());
 
+		//System.out.println(ingredient == null
+		//		? "Ingredient is not found"
+		//		: ingredient.toString());
+
+		//System.out.println(ingredient == null
+		//		? "Ingredient is not created"
+		//		: ingredient.toString());
+
+		System.out.println("Ingredients successfully removed from recipe with id="+recipeId);
 
 		String ingredientName;
 		double weight;
